@@ -1,15 +1,51 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "devDependencies": {
-    "@types/node": "^18",
-    "nuxt": "^3.4.3"
-  }
+    "name": "the-ha-wa-ja",
+    "version": "1.0.0",
+    "private": true,
+    "engines": {
+        "npm": ">=8.0.0 <9.0.0",
+        "node": ">=16.0.0 <17.0.0"
+    },
+    "scripts": {
+        "build": "nuxt build",
+        "dev": "nuxt dev",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare"
+    },
+    "devDependencies": {
+        "@nuxt/image-edge": "^1.0.0-27919678.2f5b64b",
+        "@nuxtjs/i18n": "^8.0.0-beta.9",
+        "@nuxtjs/tailwindcss": "^6.4.1",
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/line-clamp": "^0.4.2",
+        "@types/node": "^18.14.0",
+        "@vueuse/core": "^9.13.0",
+        "@vueuse/nuxt": "^9.13.0",
+        "autoprefixer": "^10.4.13",
+        "nuxt": "^3.3.1",
+        "nuxt-lodash": "^2.4.1",
+        "nuxt-simple-sitemap": "^2.2.0",
+        "postcss-each": "^1.1.0",
+        "postcss-easings": "^3.0.1",
+        "postcss-mixins": "^9.0.4",
+        "postcss-simple-vars": "^7.0.1",
+        "prettier": "^2.8.4",
+        "prettier-plugin-tailwindcss": "^0.2.3"
+    },
+    "dependencies": {
+        "@nuxtjs/robots": "^3.0.0",
+        "@pinia/nuxt": "^0.4.7",
+        "@types/three": "^0.152.0",
+        "@vueuse/components": "^9.13.0",
+        "@vueuse/motion": "^2.0.0-beta.25",
+        "gsap": "^3.11.4",
+        "nuxt-swiper": "^1.0.1",
+        "pinia": "^2.0.32",
+        "tailwind-scrollbar-hide": "^1.1.7",
+        "vue3-lottie": "^2.5.0"
+    },
+    "overrides": {
+        "vue": "latest"
+    }
 }
