@@ -49,6 +49,7 @@ export default defineNuxtConfig({
             mode: "out-in",
         },
     },
+    css: [`assets/style/tailwind.css`],
     modules: [
         // doc: https://vueuse.org/guide/
         "@vueuse/nuxt",
@@ -94,25 +95,25 @@ export default defineNuxtConfig({
     // config: @nuxtjs/i18n
     // See https://v8.i18n.nuxtjs.org/getting-started/setup
     i18n: {
-        defaultLocale: "zh-hk",
+        defaultLocale: "en",
         strategy: "prefix_and_default",
         detectBrowserLanguage: false,
-        langDir: "lang/",
-        lazy: true,
-        locales: [
-            {
-                code: "zh-hk",
-                iso: "zh-HK",
-                name: "繁",
-                file: "tc.js",
-            },
-            {
-                code: "en",
-                iso: "en-US",
-                name: "EN",
-                file: "en.js",
-            },
-        ],
+        // langDir: "lang/",
+        // lazy: true,
+        // locales: [
+        //     {
+        //         code: "zh-hk",
+        //         iso: "zh-HK",
+        //         name: "繁",
+        //         file: "tc.js",
+        //     },
+        //     {
+        //         code: "en",
+        //         iso: "en-US",
+        //         name: "EN",
+        //         file: "en.js",
+        //     },
+        // ],
     },
 
     // doc: https://nuxt.com/docs/api/configuration/nuxt-config#postcss

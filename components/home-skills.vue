@@ -30,7 +30,7 @@ const anim = ref(null);
 const home_skills = ref(null);
 const st = ref(null);
 
-// to apply any
+// to apply any lottie functions, add in @onAnimationLoaded
 const setup_tl = () => {
     anim.value.stop();
     st.value = gsap.context((self) => {
