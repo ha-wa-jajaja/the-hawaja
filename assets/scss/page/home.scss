@@ -1,0 +1,28 @@
+.pageHome {
+    padding: 20px 15px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        font-size: 40px;
+        color: #04c7cd;
+        margin-bottom: 40px;
+    }
+    .btnGuide {
+        padding: 8px 20px;
+        color: #334155;
+        font-size: 20px;
+        border-radius: 4px;
+        border: 1px solid #334155;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.25s ease;
+        &:hover {
+            border-color: #4b5b70;
+            background-color: #4b5b70;
+            color: #fff;
+        }
+    }
+}

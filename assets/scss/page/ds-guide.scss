@@ -1,0 +1,63 @@
+@mixin cateDes {
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    margin: 0px 0px 20px;
+    font-size: rem(16);
+    line-height: 1.5;
+    color: #3f3f46;
+}
+@mixin cateDes-tailwind-apply {
+    @apply text-6xl font-semibold text-blue-600;
+}
+.pageDsGuide {
+    padding: 20px 0;
+    .cateTitle {
+        color: #000000;
+        margin-bottom: 10px;
+        padding-left: 0px;
+        font-size: rem(24);
+        font-weight: 600;
+    }
+    .cateDes {
+        @include cateDes;
+    }
+    .apply-tailwindcss {
+        @include cateDes-tailwind-apply;
+    }
+    .apply-screen-minXl {
+        @screen min-xl {
+            color: #000;
+            font-size: rem(22);
+            letter-spacing: 20px;
+            @apply font-en;
+        }
+        @include mediaMax('md') {
+            color: #2fb185;
+            font-size: rem(30);
+            letter-spacing: 10px;
+        }
+    }
+
+    .breakpoint__watch {
+        margin-top: 30px;
+    }
+    .breakpoint__log {
+        padding: 12px 15px;
+        background-color: #ebebeb;
+        color: #0006ff;
+        border-radius: 5px;
+        margin-top: 5px;
+        min-height: 70px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+    .link-external {
+        color: #008ed5;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

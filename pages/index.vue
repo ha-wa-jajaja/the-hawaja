@@ -1,12 +1,19 @@
 <template>
-    <div>
-        <div class="flex-center h-20 w-full bg-blue-400">
-            <NuxtLink to="/test-color-scene"
-                >color scene
-            </NuxtLink>
-        </div>
-        <div class="h-screen w-screen bg-slate-300"></div>
-        <HomeSkills />
-        <div class="h-[200vh] w-screen bg-slate-300"></div>
+    <div class="pageHome">
+        <h1>DigiSalad Nuxt3 Base</h1>
+        <NuxtLink class="btnGuide" :to="localePath('/ds-guide')">
+            {{ $t('guide.btn_to_guide') }}
+        </NuxtLink>
     </div>
 </template>
+<script lang="ts" setup>
+const localePath = useLocalePath()
+// 設定page meta
+useMetaHead({
+    title: 'Home | DS Guide',
+    description: 'DigiSalad Nuxt3 基本使用',
+})
+</script>
+<style lang="scss">
+@import '@/assets/scss/page/home';
+</style>
