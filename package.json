@@ -1,5 +1,5 @@
 {
-    "name": "digisalad-nuxt3-base",
+    "name": "the-hawaja",
     "version": "1.0.0",
     "private": true,
     "engines": {
@@ -40,6 +40,8 @@
         "vue-router": "^4.2.5"
     },
     "dependencies": {
+        "@egjs/flicking-plugins": "^4.7.1",
+        "@egjs/vue3-flicking": "^4.11.1",
         "@pinia/nuxt": "^0.4.11",
         "gsap": "^3.12.2",
         "pinia": "^2.1.6"

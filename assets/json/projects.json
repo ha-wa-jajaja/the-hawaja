@@ -1,0 +1,49 @@
+{
+    "projects": [
+        {
+            "name": "Airside",
+            "key": "airside",
+            "link": "https://www.airside.com.hk/en"
+        },
+        {
+            "name": "Airside iaq",
+            "key": "airsideIaq",
+            "link": "https://iaq.airside.com.hk/"
+        },
+        {
+            "name": "Welend",
+            "key": "welend",
+            "link": "https://www.welend.hk/en"
+        },
+        {
+            "name": "Yidan Prize",
+            "key": "yidan",
+            "link": "https://yidanprize.org/"
+        },
+        {
+            "name": "Wynn Resorts Macau",
+            "key": "wynn",
+            "link": "https://www.wynnresortsmacau.com/en/wynn-macau"
+        },
+        {
+            "name": "PolyU Soinno Club",
+            "key": "polyu",
+            "link": "https://soinnohub.polyujcsoinno.hk/zh-hant/"
+        },
+        {
+            "name": "K&K Charity",
+            "key": "kk",
+            "link": null
+        },
+        {
+            "name": "Hopewell Cluster",
+            "key": "hopewell",
+            "link": "https://www.hopewellcluster.com/"
+        },
+        {
+            "name": "House Of Beauty",
+            "key": "hob",
+            "link": "https://houseofbeauty.com.hk/en"
+        }
+    ]
+}

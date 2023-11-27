@@ -4,15 +4,25 @@
         <NuxtLink
             :to="localePath('/')"
             class="mb-[30px] py-[6px] px-[16px] rounded-[4px] bg-slate-700 text-[12px] text-white inline-flex items-center transition hover:bg-slate-500"
-            ><span class="pr-[10px]">←</span>{{ $t('guide.btn_to_home') }}</NuxtLink
+            ><span class="pr-[10px]">←</span
+            >{{ $t("guide.btn_to_home") }}</NuxtLink
         >
         <!-- general using -->
         <div class="cateSection">
             <div class="cateTitle">#general using</div>
             <div class="cateDes">
-                <div>$config.public.baseURL → {{ $config.public?.baseURL }}</div>
-                <div>store.userName → {{ storeGlobal.userName }}</div>
-                <div>store.timeNow → {{ storeGlobal.timeNow }}</div>
+                <div>
+                    $config.public.baseURL →
+                    {{ $config.public?.baseURL }}
+                </div>
+                <div>
+                    store.userName →
+                    {{ storeGlobal.userName }}
+                </div>
+                <div>
+                    store.timeNow →
+                    {{ storeGlobal.timeNow }}
+                </div>
                 <button
                     type="button"
                     @click="storeGlobal.nuxtServerInit"
@@ -26,8 +36,12 @@
                 >
                     nuxtServerInit
                 </button>
-                <span class="ml-[5px]" style="color: #04c7cd">
-                    (check on chrome devtool 'Network => Fetch/XHR') </span
+                <span
+                    class="ml-[5px]"
+                    style="color: #04c7cd"
+                >
+                    (check on chrome devtool 'Network =>
+                    Fetch/XHR') </span
                 ><br />
                 <NuxtLinkLocale
                     to="/ds-guide"
@@ -43,8 +57,12 @@
                 >
                     <span class="text"> /ds-guide </span>
                 </NuxtLinkLocale>
-                <span class="ml-[5px]" style="color: #04c7cd">
-                    (if the link route is same with current route, do refresh page)
+                <span
+                    class="ml-[5px]"
+                    style="color: #04c7cd"
+                >
+                    (if the link route is same with current
+                    route, do refresh page)
                 </span>
             </div>
         </div>
@@ -61,12 +79,18 @@
             <div class="cateDes">
                 <div class="flex items-center mb-[20px]">
                     lang:
-                    <div class="inline-flex items-center pl-[10px]">
+                    <div
+                        class="inline-flex items-center pl-[10px]"
+                    >
                         <NuxtLink
                             v-for="item in (locales as LocaleObject[])"
                             :key="item.code"
                             class="mr-3 font-medium leading-[1.3] last-of-type:mr-0"
-                            :class="locale !== item.code ? 'hover:!text-black' : {}"
+                            :class="
+                                locale !== item.code
+                                    ? 'hover:!text-black'
+                                    : {}
+                            "
                             :style="
                                 locale === item.code
                                     ? {
@@ -77,7 +101,9 @@
                                           color: '#bbbbbb',
                                       }
                             "
-                            :to="switchLocalePath(item.code)"
+                            :to="
+                                switchLocalePath(item.code)
+                            "
                         >
                             <div v-html="item.name"></div>
                         </NuxtLink>
@@ -85,7 +111,9 @@
                 </div>
                 <div class="flex items-center mb-[20px]">
                     lang remains:
-                    <div class="inline-flex items-center pl-[10px]">
+                    <div
+                        class="inline-flex items-center pl-[10px]"
+                    >
                         <NuxtLink
                             v-for="item in otherLocales"
                             :key="item.code"
@@ -93,7 +121,9 @@
                             :style="{
                                 color: '#bbbbbb',
                             }"
-                            :to="switchLocalePath(item.code)"
+                            :to="
+                                switchLocalePath(item.code)
+                            "
                         >
                             <div v-html="item.name"></div>
                         </NuxtLink>
@@ -101,14 +131,19 @@
                 </div>
                 <div class="flex items-center mb-[20px]">
                     lang current:
-                    <div class="inline-flex items-center pl-[10px]">
+                    <div
+                        class="inline-flex items-center pl-[10px]"
+                    >
                         {{ currentLocaleName }}
                     </div>
                 </div>
                 $t('guide.recommend_for_you') →
-                {{ $t('guide.recommend_for_you') }}<br />
-                $t('guide.desc') → {{ $t('guide.desc') }}
-                <div class="mt-[10px] text-[14px]" style="color: #f7b55e">
+                {{ $t("guide.recommend_for_you") }}<br />
+                $t('guide.desc') → {{ $t("guide.desc") }}
+                <div
+                    class="mt-[10px] text-[14px]"
+                    style="color: #f7b55e"
+                >
                     ※(Switching language will tigger
                     <span
                         style="
@@ -139,8 +174,10 @@
                 isIos → {{ device.isIos }}<br />
                 isAndroid → {{ device.isAndroid }}<br />
                 isMobile → {{ device.isMobile }}<br />
-                isMobileOrTablet → {{ device.isMobileOrTablet }}<br />
-                isDesktopOrTablet → {{ device.isDesktopOrTablet }}<br />
+                isMobileOrTablet →
+                {{ device.isMobileOrTablet }}<br />
+                isDesktopOrTablet →
+                {{ device.isDesktopOrTablet }}<br />
                 isTablet → {{ device.isTablet }}<br />
                 isWindows → {{ device.isWindows }}<br />
                 isMacOS → {{ device.isMacOS }}<br />
@@ -152,7 +189,8 @@
         <!-- useMedia (composables & injection) -->
         <div class="cateSection">
             <div class="cateTitle">
-                #useMedia (composables & injection) &nbsp;&nbsp;底層使用
+                #useMedia (composables & injection)
+                &nbsp;&nbsp;底層使用
                 <a
                     class="link-external"
                     href="https://nuxt.com/modules/nuxt-viewport"
@@ -162,17 +200,26 @@
             </div>
             <div class="cateDes">
                 <div>
-                    window width → <ClientOnly>{{ winWidth }}</ClientOnly>
+                    window width →
+                    <ClientOnly>{{ winWidth }}</ClientOnly>
                     <br />
-                    window height → <ClientOnly>{{ winHeight }}</ClientOnly>
+                    window height →
+                    <ClientOnly>{{ winHeight }}</ClientOnly>
                 </div>
                 <br />
-                $useMedia.max('xl') → {{ $useMedia.max('xl') }}<br />
-                $useMedia.min('2xl') → {{ $useMedia.min('2xl') }}<br />
-                <div class="breakpoint__watch whitespace-pre-line">
+                $useMedia.max('xl') →
+                {{ $useMedia.max("xl") }}<br />
+                $useMedia.min('2xl') →
+                {{ $useMedia.min("2xl") }}<br />
+                <div
+                    class="breakpoint__watch whitespace-pre-line"
+                >
                     Breakpoint updated:<br />
                     <div class="breakpoint__log">
-                        <p v-if="!breakpointUpdateLog">start to resize window to see log</p>
+                        <p v-if="!breakpointUpdateLog">
+                            start to resize window to see
+                            log
+                        </p>
                         {{ breakpointUpdateLog }}
                     </div>
                 </div>
@@ -180,15 +227,28 @@
         </div>
         <!-- useColor (composables) -->
         <div class="cateSection">
-            <div class="cateTitle">#useColor (composables)</div>
+            <div class="cateTitle">
+                #useColor (composables)
+            </div>
             <div class="cateDes">
-                <div class="flex items-center" v-for="(item, key, index) in colors" :key="index">
+                <div
+                    class="flex items-center"
+                    v-for="(item, key, index) in colors"
+                    :key="index"
+                >
                     <span
                         class="cube mr-[6px] w-[15px] h-[15px] block"
                         :style="`background-color:${item.value};`"
                     ></span>
-                    <span class="hex" :style="`color:${item.value};`">{{ item.value }}</span>
-                    <span class="name ml-[20px] text-[14px]">{{ key }}</span>
+                    <span
+                        class="hex"
+                        :style="`color:${item.value};`"
+                        >{{ item.value }}</span
+                    >
+                    <span
+                        class="name ml-[20px] text-[14px]"
+                        >{{ key }}</span
+                    >
                 </div>
             </div>
         </div>
@@ -201,8 +261,16 @@
                 </span>
             </div>
             <div class="cateDes">
-                <div v-for="(value, index) in keysFontSizeBase" :key="index" class="mb-[5px]">
-                    <p :class="`${value}`">DigiSalad 正文文本 {{ value }}</p>
+                <div
+                    v-for="(
+                        value, index
+                    ) in keysFontSizeBase"
+                    :key="index"
+                    class="mb-[5px]"
+                >
+                    <p :class="`${value}`">
+                        DigiSalad 正文文本 {{ value }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -211,54 +279,115 @@
             <div class="cateTitle">#styling button</div>
             <div class="cateDes">
                 <div class="flex items-center mb-[20px]">
-                    <button class="btn btn-primary--sm mx-[15px] ml-0">Text</button>
-                    <button class="btn btn-primary--md mx-[15px]">Text</button>
-                    <button class="btn btn-primary--lg mx-[15px]">Text</button>
+                    <button
+                        class="btn btn-primary--sm mx-[15px] ml-0"
+                    >
+                        Text
+                    </button>
+                    <button
+                        class="btn btn-primary--md mx-[15px]"
+                    >
+                        Text
+                    </button>
+                    <button
+                        class="btn btn-primary--lg mx-[15px]"
+                    >
+                        Text
+                    </button>
                 </div>
                 <div class="flex items-center">
-                    <button class="btn btn-primary--sm mx-[15px] ml-0" disabled>Text</button>
-                    <button class="btn btn-primary--md mx-[15px]" disabled>Text</button>
-                    <button class="btn btn-primary--lg mx-[15px]" disabled>Text</button>
+                    <button
+                        class="btn btn-primary--sm mx-[15px] ml-0"
+                        disabled
+                    >
+                        Text
+                    </button>
+                    <button
+                        class="btn btn-primary--md mx-[15px]"
+                        disabled
+                    >
+                        Text
+                    </button>
+                    <button
+                        class="btn btn-primary--lg mx-[15px]"
+                        disabled
+                    >
+                        Text
+                    </button>
                 </div>
             </div>
         </div>
         <!-- styling by classname from scss file -->
         <div class="cateSection">
-            <div class="cateTitle">#styling by classname from scss file</div>
-            <div class="cateDes !text-[25px]" style="color: #00c6ce">DigiSalad Nuxt3 Base</div>
+            <div class="cateTitle">
+                #styling by classname from scss file
+            </div>
+            <div
+                class="cateDes !text-[25px]"
+                style="color: #00c6ce"
+            >
+                DigiSalad Nuxt3 Base
+            </div>
         </div>
         <!-- styling by tailwindcss classname inline directly -->
         <div class="cateSection">
-            <div class="cateTitle">#styling by tailwindcss classname inline directly</div>
-            <div class="cateDes apply-tailwindcss">DigiSalad Nuxt3 Base</div>
+            <div class="cateTitle">
+                #styling by tailwindcss classname inline
+                directly
+            </div>
+            <div class="cateDes apply-tailwindcss">
+                DigiSalad Nuxt3 Base
+            </div>
         </div>
         <!-- styling by RWD(@screen min-xl) from scss file -->
         <div class="cateSection">
-            <div class="cateTitle">#styling by RWD(@screen min-xl) from scss file</div>
-            <div class="cateDes apply-screen-minXl">DigiSalad Nuxt3 Base</div>
+            <div class="cateTitle">
+                #styling by RWD(@screen min-xl) from scss
+                file
+            </div>
+            <div class="cateDes apply-screen-minXl">
+                DigiSalad Nuxt3 Base
+            </div>
         </div>
         <!-- styling by tailwindcss line-clamp-{nummber} -->
         <div class="cateSection">
             <div class="cateTitle">
                 #styling by tailwindcss
-                <span class="text-[#c97979] text-[16px]">class="line-clamp-{nummber}" </span>
+                <span class="text-[#c97979] text-[16px]"
+                    >class="line-clamp-{nummber}"
+                </span>
             </div>
             <div class="cateDes">
                 <p class="line-clamp-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit beatae cumque
-                    tempore eveniet quae reiciendis architecto a ad distinctio nisi. Facere animi
-                    sapiente aut soluta! Veniam, enim? Earum, repudiandae ducimus. A cum dolor
-                    eligendi asperiores cumque obcaecati blanditiis saepe, quas ducimus, magni neque
-                    nam ut facilis iusto dolores accusamus, necessitatibus nihil molestiae
-                    reprehenderit reiciendis atque porro! Consequuntur magnam itaque ad? Quasi
-                    ducimus beatae eveniet labore. Praesentium dolores omnis ad fugiat corrupti,
-                    laudantium qui labore itaque eaque placeat ipsa odio? Molestias deserunt ipsum
-                    beatae illum iusto iure animi alias exercitationem illo. Vero fugit, laboriosam
-                    omnis est enim quod adipisci, ad veniam modi porro molestiae ipsam provident
-                    cumque vel dicta neque? Voluptates assumenda sint rerum rem, placeat minus
-                    possimus ad. Modi, ab. Ut tempora inventore, dolores commodi quod fuga itaque a
-                    veritatis error eligendi sunt, illo eveniet tenetur natus eos ipsa ab sequi
-                    libero ipsum voluptas voluptatibus. Ex iusto inventore totam velit.
+                    Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Sit beatae cumque
+                    tempore eveniet quae reiciendis
+                    architecto a ad distinctio nisi. Facere
+                    animi sapiente aut soluta! Veniam, enim?
+                    Earum, repudiandae ducimus. A cum dolor
+                    eligendi asperiores cumque obcaecati
+                    blanditiis saepe, quas ducimus, magni
+                    neque nam ut facilis iusto dolores
+                    accusamus, necessitatibus nihil
+                    molestiae reprehenderit reiciendis atque
+                    porro! Consequuntur magnam itaque ad?
+                    Quasi ducimus beatae eveniet labore.
+                    Praesentium dolores omnis ad fugiat
+                    corrupti, laudantium qui labore itaque
+                    eaque placeat ipsa odio? Molestias
+                    deserunt ipsum beatae illum iusto iure
+                    animi alias exercitationem illo. Vero
+                    fugit, laboriosam omnis est enim quod
+                    adipisci, ad veniam modi porro molestiae
+                    ipsam provident cumque vel dicta neque?
+                    Voluptates assumenda sint rerum rem,
+                    placeat minus possimus ad. Modi, ab. Ut
+                    tempora inventore, dolores commodi quod
+                    fuga itaque a veritatis error eligendi
+                    sunt, illo eveniet tenetur natus eos
+                    ipsa ab sequi libero ipsum voluptas
+                    voluptatibus. Ex iusto inventore totam
+                    velit.
                 </p>
             </div>
         </div>
@@ -273,7 +402,10 @@
                 >)
             </div>
             <div class="cateDes">
-                <iframe src="/sitemap.xml" class="w-full h-[400px]"></iframe>
+                <iframe
+                    src="/sitemap.xml"
+                    class="w-full h-[400px]"
+                ></iframe>
             </div>
         </div>
         <!-- nuxt-schema-org -->
@@ -293,52 +425,71 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { useGlobalStore } from '~/store'
-import type { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
-import fontSizeDesktop from '~/vender/tailwindcss/fontSize_desktop.json'
-const localePath = useLocalePath()
-const keysFontSizeBase = Object.keys(fontSizeDesktop).map((key) => {
-    const name = `text-${key.substring(0, key.lastIndexOf('-'))}`
-    return name
-})
+import { useGlobalStore } from "~/store";
+import type { LocaleObject } from "@nuxtjs/i18n/dist/runtime/composables";
+import fontSizeDesktop from "~/vender/tailwindcss/fontSize_desktop.json";
+const localePath = useLocalePath();
+const keysFontSizeBase = Object.keys(fontSizeDesktop).map(
+    (key) => {
+        const name = `text-${key.substring(
+            0,
+            key.lastIndexOf("-")
+        )}`;
+        return name;
+    }
+);
 
 // 設定page meta
 useMetaHead({
-    title: 'DS Guide',
-    description: 'DigiSalad Nuxt3 基本使用',
-    image: 'https://dummyimage.com/1200x630/ccc/fff',
-})
+    title: "DS Guide",
+    description: "DigiSalad Nuxt3 基本使用",
+    image: "https://dummyimage.com/1200x630/ccc/fff",
+});
 
 //#region set page head
 useHead(() => ({
-    meta: [{ hid: 'robots', name: 'robots', content: 'noindex' }],
-}))
+    meta: [
+        {
+            hid: "robots",
+            name: "robots",
+            content: "noindex",
+        },
+    ],
+}));
 //#endregion
 
-const { data } = await useApiFetch('global/global')
+// const { data } = await useApiFetch('global/global')
 
-const { width: winWidth, height: winHeight } = useWindowSize()
-const colors = useColor()
-const storeGlobal = useGlobalStore()
-const device = useDevice()
-const { locale, locales } = useI18n()
-const { currentLocaleName, otherLocales } = useLocale()
-const switchLocalePath = useSwitchLocalePath()
+const { width: winWidth, height: winHeight } =
+    useWindowSize();
+const colors = useColor();
+const storeGlobal = useGlobalStore();
+const device = useDevice();
+const { locale, locales } = useI18n();
+const { currentLocaleName, otherLocales } = useLocale();
+const switchLocalePath = useSwitchLocalePath();
 
 //#region viewport
 // const { $viewport } = useNuxtApp()
-const viewport = useViewport()
-let breakpointUpdateLog = ref('')
+const viewport = useViewport();
+let breakpointUpdateLog = ref("");
 onMounted(() => {
-    const El_breakpointLog = document.querySelector('.breakpoint__log')
+    const El_breakpointLog = document.querySelector(
+        ".breakpoint__log"
+    );
 
-    watch(viewport.breakpoint, async (newBreakpoint, oldBreakpoint) => {
-        const r = `${oldBreakpoint} -> ${newBreakpoint}\r\n`
-        breakpointUpdateLog.value += r
-        await nextTick()
-        El_breakpointLog?.scrollTo({ top: El_breakpointLog.scrollHeight })
-    })
-})
+    watch(
+        viewport.breakpoint,
+        async (newBreakpoint, oldBreakpoint) => {
+            const r = `${oldBreakpoint} -> ${newBreakpoint}\r\n`;
+            breakpointUpdateLog.value += r;
+            await nextTick();
+            El_breakpointLog?.scrollTo({
+                top: El_breakpointLog.scrollHeight,
+            });
+        }
+    );
+});
 //#endregion
 
 //#region exemple: 在 onMounted 內使用 useApiFetch
@@ -352,32 +503,32 @@ onMounted(() => {
 //#endregion
 
 //#region useTransition
-const { transitionState } = useTransition()
+const { transitionState } = useTransition();
 //監聽 page transition complete
 watch(
     () => transitionState.transitionComplete,
     (newValue) => {
         if (newValue) {
             //page transition complete
-            console.warn('page transition complete')
+            console.warn("page transition complete");
         }
-    },
-)
+    }
+);
 //#endregion
 
 //#region useAfterScreenResize
 //監聽 after screen resize complete
-const { screenResizeState } = useAfterScreenResize()
+const { screenResizeState } = useAfterScreenResize();
 watch(
     () => screenResizeState.resizeComplete,
     (newValue) => {
         if (newValue) {
-            console.warn('screen resize complete')
+            console.warn("screen resize complete");
         }
-    },
-)
+    }
+);
 //#endregion
 </script>
 <style lang="scss">
-@import '@/assets/scss/page/ds-guide';
+@import "@/assets/scss/page/ds-guide";
 </style>
