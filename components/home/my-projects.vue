@@ -2,7 +2,7 @@
     <section
         class="my-projects flex flex-col items-center justify-center"
     >
-        <div class="bg-black p-6" v-fade:clip>
+        <div class="bg-black p-6" v-fade:clipUp>
             <div class="text-wrapper overflow-hidden">
                 <h1
                     class="text-[72px] text-white font-bold"

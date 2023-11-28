@@ -35,6 +35,8 @@ module.exports = {
                     "fade-scale .6s ease-in-out .2s 1 forwards",
                 "clip-reveal":
                     "clip-reveal .6s ease-in-out .2s 1 forwards",
+                "clip-reveal-up":
+                    "clip-reveal-up .3s ease-in-out .2s 1 forwards",
             },
             keyframes: {
                 "fade-in": {
@@ -86,12 +88,21 @@ module.exports = {
                         "-webkit-clip-path":
                             "inset(0 100% 0 0)",
                         "clip-path": "inset(0 100% 0 0)",
-                        opacity: 0,
                     },
                     "100%": {
                         "-webkit-clip-path": "inset(0)",
                         "clip-path": "inset(0)",
-                        opacity: 1,
+                    },
+                },
+                "clip-reveal-up": {
+                    "0%": {
+                        "-webkit-clip-path":
+                            "inset(100% 0 0 0)",
+                        "clip-path": "inset(100% 0 0 0)",
+                    },
+                    "100%": {
+                        "-webkit-clip-path": "inset(0)",
+                        "clip-path": "inset(0)",
                     },
                 },
             },

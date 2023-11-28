@@ -31,12 +31,14 @@ const classNameMap = {
     out: "animate-zoom-out",
     scale: "animate-fade-scale",
     clip: "animate-clip-reveal",
+    clipUp: "animate-clip-reveal-up",
 };
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.directive("fade", {
-        beforeMount(el) {
-            el.classList.add("opacity-0");
+        beforeMount(el, binding) {
+            if (!binding.arg?.includes("clip"))
+                el.classList.add("opacity-0");
         },
         mounted(el, binding) {
             const className =
