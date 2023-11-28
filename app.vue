@@ -1,16 +1,18 @@
 <template>
     <NuxtLayout id="nuxt-layout">
         <NuxtLoadingIndicator />
-        <NuxtPage :key="storeGlobal.pageKey" />
+        <lenis>
+            <NuxtPage :key="storeGlobal.pageKey" />
+        </lenis>
         <UiDsAppTransition />
         <UiDsPageLoader />
     </NuxtLayout>
 </template>
 <script lang="ts" setup>
-import { useGlobalStore } from '~/store'
-const storeGlobal = useGlobalStore()
-const { $config } = useNuxtApp()
-const { toggleTransitionComplete } = useTransition()
+import { useGlobalStore } from "~/store";
+const storeGlobal = useGlobalStore();
+const { $config } = useNuxtApp();
+const { toggleTransitionComplete } = useTransition();
 
 //專案中自行替換下列參數值
 // useMetaHead({
@@ -23,14 +25,14 @@ const { toggleTransitionComplete } = useTransition()
 useSchemaOrg([
     // TODO Select Identity: https://unhead.unjs.io/schema-org/guides/identity
     defineWebSite({
-        name: 'My Awesome Website',
+        name: "My Awesome Website",
     }),
     defineWebPage(),
-])
+]);
 //#endregion
 
 onMounted(() => {
-    toggleTransitionComplete(true)
-})
+    toggleTransitionComplete(true);
+});
 </script>
 <style></style>
