@@ -1,0 +1,8 @@
+Model Information:
+* title:	Spinning top
+* source:	https://sketchfab.com/3d-models/spinning-top-fa880ab5e28a4e19a4fa8d93fd78a110
+* author:	FrancescoMilanese (https://sketchfab.com/FrancescoMilanese)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
