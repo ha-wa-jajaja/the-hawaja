@@ -7,18 +7,17 @@
 import {
     Scene,
     PerspectiveCamera,
-    Mesh,
-    SphereGeometry,
-    MeshBasicMaterial,
     WebGLRenderer,
     Color,
     Fog,
     AmbientLight,
     DirectionalLight,
     HemisphereLight,
+    PMREMGenerator,
 } from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 
 import { useWindowSize } from "@vueuse/core";
 const { width, height } = useWindowSize();
@@ -30,7 +29,7 @@ let renderer: WebGLRenderer;
 let controls: OrbitControls;
 const canvas: Ref<HTMLCanvasElement | null> = ref(null);
 
-const bgc = new Color("#FFFFFF");
+const bgc = new Color("#000000");
 const scene = new Scene();
 scene.fog = new Fog(bgc, 0.1, 75);
 scene.background = bgc;
@@ -44,10 +43,8 @@ const camera = new PerspectiveCamera(
 camera.position.set(0, 2, 4);
 
 scene.add(camera);
-const ambientLight = new AmbientLight(0xffffff, 2.5);
+const ambientLight = new AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
-const dirLight = new DirectionalLight(0xffffff, 2.5);
-scene.add(dirLight);
 
 const gltfLoader = new GLTFLoader();
 gltfLoader.load("/spinning_top/scene.gltf", (gltf) => {
@@ -76,6 +73,12 @@ function setRenderer() {
     renderer.setPixelRatio(
         Math.min(window.devicePixelRatio, 2)
     );
+    let pmremGenerator = new PMREMGenerator(renderer);
+    pmremGenerator.compileEquirectangularShader();
+    let neutralEnvironment = pmremGenerator.fromScene(
+        new RoomEnvironment()
+    ).texture;
+    scene.environment = neutralEnvironment;
 
     controls = new OrbitControls(
         camera,
