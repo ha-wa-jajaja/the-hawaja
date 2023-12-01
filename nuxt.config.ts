@@ -76,4 +76,14 @@ export default defineNuxtConfig({
         exposeConfig: true,
         // exposeLevel: 1,  // determines tree-shaking (optional)
     },
+    googleFonts: {
+        families: {
+            "Roboto+Mono": {
+                wght: [300, 400, 600, 700],
+            },
+            "Source+Code+Pro": {
+                wght: [300, 400, 600, 700],
+            },
+        },
+    },
 });
