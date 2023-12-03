@@ -1,13 +1,16 @@
 <template>
     <div ref="scene_page">
+        <!-- <div
+            class="w-screen h-screen bg-blue-300 main-scroll"
+        ></div> -->
         <div
-            class="w-screen h-screen bg-black text-white flex items-center justify-center bottom-layer"
+            class="w-screen h-screen bg-black text-white flex items-center justify-center first relative"
         >
             <UiRandomText :content="' HI, ITS JEFFREY'" />
+            <div
+                class="w-screen h-screen bg-[#600080] clip-layer absolute inset-0"
+            ></div>
         </div>
-        <div
-            class="w-screen h-screen bg-[#600080] cover-layer"
-        ></div>
         <div
             class="w-screen h-screen bg-green-500 main-scroll"
         ></div>
@@ -22,44 +25,39 @@ gsap.registerPlugin(ScrollTrigger);
 const scene_page = ref(null);
 const ctx = ref(null);
 
-onMounted(() => {
+// const clipRevealProgress = ref(100);
+function setupAnim() {
     ctx.value = gsap.context((self) => {
-        const main = self.selector(".main-scroll");
-        const cover = self.selector(".cover-layer");
-        const bottom = self.selector(".bottom-layer");
-
-        ScrollTrigger.create({
-            trigger: main,
-            start: "bottom bottom",
-            end: "bottom top",
-            pin: true,
-            // onUpdate: (self) =>
-            //     console.log(self.progress.toFixed(3)),
+        const first = self.selector(".first");
+        const clipLayer = self.selector(".clip-layer");
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: first,
+                start: "top top",
+                end: "bottom top",
+                pin: true,
+                scrub: true,
+            },
         });
 
-        ScrollTrigger.create({
-            trigger: bottom,
-            start: "top top",
-            pin: true,
-            pinSpacing: false,
-            // onUpdate: (self) =>
-            //     console.log(self.progress.toFixed(3)),
-        });
-
-        ScrollTrigger.create({
-            trigger: cover,
-            start: "top top",
-
-            pin: true,
-            pinSpacing: false,
-            // onUpdate: (self) =>
-            //     console.log(self.progress.toFixed(3)),
+        tl.to(clipLayer, {
+            "--clip": "0",
         });
     }, scene_page.value); // <- Scope!
+}
+
+onMounted(async () => {
+    await nextTick();
+    setupAnim();
 });
 
 onUnmounted(() => {
     ctx.value.revert(); // <- Easy Cleanup!
 });
 </script>
-<style lang=""></style>
+<style lang="scss" scoped>
+.clip-layer {
+    --clip: 100%;
+    clip-path: inset(var(--clip) 0 0 0);
+}
+</style>
