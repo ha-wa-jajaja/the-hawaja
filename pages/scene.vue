@@ -7,10 +7,17 @@
             class="w-screen h-screen bg-black text-white flex items-center justify-center first relative"
         >
             <UiRandomText :content="' HI, ITS JEFFREY'" />
+            <UiDust
+                class="absolute inset-0 z-10"
+                :rotate-x="spinnerRotate"
+            />
             <div
-                class="w-screen h-screen bg-[#600080] clip-layer absolute inset-0"
+                class="w-screen h-screen bg-[#600080] clip-layer absolute inset-0 z-0"
             ></div>
         </div>
+        <div
+            class="w-screen h-screen bg-blue-500 second"
+        ></div>
         <div
             class="w-screen h-screen bg-green-500 main-scroll"
         ></div>
@@ -25,7 +32,7 @@ gsap.registerPlugin(ScrollTrigger);
 const scene_page = ref(null);
 const ctx = ref(null);
 
-// const clipRevealProgress = ref(100);
+const spinnerRotate = ref(0);
 function setupAnim() {
     ctx.value = gsap.context((self) => {
         const first = self.selector(".first");
@@ -37,6 +44,9 @@ function setupAnim() {
                 end: "bottom top",
                 pin: true,
                 scrub: true,
+                onUpdate: (self) => {
+                    spinnerRotate.value = self.progress;
+                },
             },
         });
 

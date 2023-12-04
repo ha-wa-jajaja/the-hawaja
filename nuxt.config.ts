@@ -36,6 +36,7 @@ export default defineNuxtConfig({
         // doc: https://github.com/zadigetvoltaire/nuxt-gtm
         //'@zadigetvoltaire/nuxt-gtm',
         "nuxt-lenis",
+        "@tresjs/nuxt",
     ],
     // doc: https://nuxt.com/docs/api/configuration/nuxt-config#postcss
     devServer: {
