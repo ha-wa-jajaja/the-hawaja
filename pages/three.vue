@@ -1,5 +1,19 @@
 <script setup lang="ts">
-import { GLTFModel, OrbitControls } from "@tresjs/cientos";
+import {
+    GLTFModel,
+    OrbitControls,
+    useAnimations,
+    useGLTF,
+} from "@tresjs/cientos";
+
+// const { scene } = await useGLTF(
+//     "/dark_mystery_effect/scene.gltf"
+// );
+
+// const { actions, mixer } = useAnimations(animations, scene);
+// actions[0].play;
+
+// const { actions, mixer } = useAnimations(animations, model)
 </script>
 
 <template>
@@ -8,7 +22,9 @@ import { GLTFModel, OrbitControls } from "@tresjs/cientos";
             <TresPerspectiveCamera :position="[3, 2, 5]" />
             <OrbitControls />
             <Suspense>
-                <GLTFModel path="/dust/scene.gltf" />
+                <GLTFModel
+                    path="/spinning_top/scene.gltf"
+                />
             </Suspense>
             <TresDirectionalLight
                 :intensity="2"
