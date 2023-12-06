@@ -2,7 +2,7 @@
     <section
         class="my-projects flex flex-col items-center justify-center"
     >
-        <div class="bg-black p-6" v-fade:clipUp>
+        <div class="bg-black p-6" v-fade:clip>
             <div class="text-wrapper overflow-hidden">
                 <h1
                     class="text-[72px] text-white font-bold"
@@ -11,6 +11,11 @@
                 </h1>
             </div>
         </div>
+        <UiTextRevealer>
+            <h1 class="text-[72px] text-white font-bold">
+                {{ $t("myProjects") }}
+            </h1>
+        </UiTextRevealer>
         <div
             class="bg-[#696969] w-[500px] aspect-square"
             v-fade:clip

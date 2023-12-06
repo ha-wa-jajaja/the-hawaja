@@ -7,7 +7,7 @@
             class="w-screen h-screen bg-black text-white flex items-center justify-center first relative"
         >
             <UiRandomText :content="' HI, ITS JEFFREY'" />
-            <UiDust
+            <UiSpinner
                 class="absolute inset-0 z-10"
                 :rotate-x="spinnerRotate"
             />
