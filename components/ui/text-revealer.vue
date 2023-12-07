@@ -1,8 +1,5 @@
 <template>
-    <div
-        class="relative p-4 w-fit h-fit bg-black"
-        ref="wrapper"
-    >
+    <div class="relative p-4 w-fit h-fit" ref="wrapper">
         <div class="content w-fit h-fit">
             <slot />
         </div>
