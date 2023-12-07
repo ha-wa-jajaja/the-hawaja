@@ -30,13 +30,11 @@ import {
             <Environment preset="city" />
             <TresCanvas clear-color="#d3d3d3" window-size>
                 <TresPerspectiveCamera
-                    :position="[3, 2, 5]"
+                    :position="[9.4, 9.4, 9.4]"
                 />
                 <OrbitControls />
                 <Suspense>
-                    <GLTFModel
-                        path="/spinning_top/scene.gltf"
-                    />
+                    <GLTFModel path="/cube/scene.gltf" />
                 </Suspense>
                 <TresDirectionalLight
                     :intensity="2"

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cubes 0065
+* source:	https://sketchfab.com/3d-models/cubes-0065-3cd899d79e664636b14fc84781cd746d
+* author:	ParuthidotExE (https://sketchfab.com/ParuthidotExE)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cubes 0065" (https://sketchfab.com/3d-models/cubes-0065-3cd899d79e664636b14fc84781cd746d) by ParuthidotExE (https://sketchfab.com/ParuthidotExE) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
