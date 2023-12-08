@@ -2,7 +2,7 @@
     <section class="my-projects" ref="my_projects">
         <main class="container flex items-center h-full">
             <!-- slider -->
-            <section class="w-[540px]">
+            <section class="w-[540px] shrink-0">
                 <SharedFlickingCore
                     ref="projects_flicking"
                     @send-index="getIndex"
@@ -22,6 +22,18 @@
                 <h1 class="text-h1">
                     {{ active_item?.name }}
                 </h1>
+                <p class="text-h4">
+                    Lorem ipsum dolor, sit amet consectetur
+                    adipisicing elit. Iusto adipisci ea
+                    facere ut eligendi, voluptatem
+                    reiciendis officiis! Explicabo
+                    consequuntur totam deserunt suscipit
+                    eaque reprehenderit, repellendus, labore
+                    qui odio eum rerum!
+                </p>
+                <button class="bg-white p-10">
+                    view site
+                </button>
             </section>
         </main>
 
@@ -41,8 +53,8 @@ const active_index = ref(0);
 function getIndex(num) {
     active_index.value = num;
 }
-const active_item = computed(() =>
-    projects ? projects[active_index.value] : {}
+const active_item = computed(
+    () => projects[active_index.value]
 );
 
 let tl;

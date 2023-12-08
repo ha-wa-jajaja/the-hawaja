@@ -21,7 +21,6 @@
 </template>
 <script setup>
 import Flicking from "@egjs/vue3-flicking";
-import "@egjs/vue3-flicking/dist/flicking.css";
 import { Arrow, Perspective } from "@egjs/flicking-plugins";
 
 const props = defineProps({
@@ -68,7 +67,7 @@ const {
 const emit = defineEmits(["sendIndex"]);
 
 watch(slideIdx, () => {
-    emit("sendIndex", slideIdx);
+    emit("sendIndex", slideIdx.value);
 });
 
 function navTo(idx) {
@@ -106,4 +105,6 @@ onMounted(async () => {
     setPlugins();
 });
 </script>
-<style lang=""></style>
+<style>
+@import url("node_modules/@egjs/vue3-flicking/dist/flicking.css");
+</style>
