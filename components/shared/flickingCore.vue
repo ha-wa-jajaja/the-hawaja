@@ -1,4 +1,3 @@
-<!-- npm install @egjs/vue3-flicking -->
 <template>
     <Flicking
         ref="flicking"
@@ -22,6 +21,7 @@
 </template>
 <script setup>
 import Flicking from "@egjs/vue3-flicking";
+import "@egjs/vue3-flicking/dist/flicking.css";
 import { Arrow, Perspective } from "@egjs/flicking-plugins";
 
 const props = defineProps({
@@ -65,16 +65,10 @@ const {
     totalItems,
 } = useFlickingCtrl();
 
-const emit = defineEmits(["sendIndexes"]);
-const computedSlideIdx = computed(() => slideIdx.value);
-const computedPrevIdx = computed(() => prevIdx.value);
-const computedNextIdx = computed(() => nextIdx.value);
-watch(computedSlideIdx, () => {
-    emit("sendIndexes", {
-        current: computedSlideIdx.value,
-        prev: computedPrevIdx.value,
-        next: computedNextIdx.value,
-    });
+const emit = defineEmits(["sendIndex"]);
+
+watch(slideIdx, () => {
+    emit("sendIndex", slideIdx);
 });
 
 function navTo(idx) {

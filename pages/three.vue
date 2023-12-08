@@ -28,13 +28,13 @@ import {
     <div class="bg-white">
         <ClientOnly>
             <Environment preset="city" />
-            <TresCanvas clear-color="#d3d3d3" window-size>
+            <TresCanvas clear-color="#180023" window-size>
                 <TresPerspectiveCamera
                     :position="[9.4, 9.4, 9.4]"
                 />
                 <OrbitControls />
                 <Suspense>
-                    <GLTFModel path="/cube/scene.gltf" />
+                    <GLTFModel path="/city/scene.gltf" />
                 </Suspense>
                 <TresDirectionalLight
                     :intensity="2"

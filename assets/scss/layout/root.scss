@@ -9,7 +9,7 @@ body {
     text-rendering: optimizeLegibility;
 }
 .container {
-    @apply px-4 w-full max-w-[1600px];
+    @apply px-4 w-full max-w-[1440px];
     margin: 0 auto;
     @screen min-2lg {
         @apply px-[120px];

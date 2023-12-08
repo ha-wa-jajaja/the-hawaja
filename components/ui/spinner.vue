@@ -37,10 +37,10 @@ let renderer: WebGLRenderer;
 let controls: OrbitControls;
 const canvas: Ref<HTMLCanvasElement | null> = ref(null);
 
-// const bgc = new Color("#000000");
+const bgc = new Color("#180023");
 const scene = new Scene();
-// scene.fog = new Fog(bgc, 0.1, 75);
-scene.background = null;
+scene.fog = new Fog(bgc, 0.1, 75);
+scene.background = bgc;
 
 const camera = new PerspectiveCamera(
     75,
@@ -48,14 +48,14 @@ const camera = new PerspectiveCamera(
     0.1,
     1000
 );
-camera.position.set(0, 2, 4);
+camera.position.set(9.19, 1.29, -4.3);
 
 scene.add(camera);
 const ambientLight = new AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 
 const gltfLoader = new GLTFLoader();
-gltfLoader.load("/spinning_top/scene.gltf", (gltf) => {
+gltfLoader.load("/city/scene.gltf", (gltf) => {
     scene.add(gltf.scene);
 });
 

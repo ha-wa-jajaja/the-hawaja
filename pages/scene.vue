@@ -7,17 +7,14 @@
             class="w-screen h-screen bg-black text-white flex items-center justify-center first relative"
         >
             <UiRandomText :content="' HI, ITS JEFFREY'" />
-            <UiSpinner
-                class="absolute inset-0 z-10"
-                :rotate-x="spinnerRotate"
-            />
+
             <div
-                class="w-screen h-screen bg-[#600080] clip-layer absolute inset-0 z-0"
-            ></div>
+                class="w-screen h-screen bg-[#600080] clip-layer absolute inset-0 z-0 pointer-events-none"
+            >
+                <UiSpinner />
+            </div>
         </div>
-        <div
-            class="w-screen h-screen bg-blue-500 second"
-        ></div>
+        <HomeMyProjects />
         <div
             class="w-screen h-screen bg-green-500 main-scroll"
         ></div>
