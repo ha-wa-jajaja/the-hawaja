@@ -1,12 +1,12 @@
 <template>
-    <UiStickyPinSection ref="pinWrapper">
+    <UiStickyPinSection ref="pinWrapper" :height="100">
         <section
             class="w-screen h-screen bg-transparent text-white flex flex-col-reverse items-start"
             ref="home_landing"
         >
             <!-- <UiRandomText :content="' IT&#8217S JEFFREY'" :wait-for-prev="true" :prev-done="text1Done"/>
             <UiRandomText :content="' HI'" ref="text1"/> -->
-            <HomeLandingRandomText :content="' IT&#8217S JEFFREY'"/>
+            <HomeLandingRandomText :content="' IT&#8217S JEFFREY'" :timeout="200"/>
             <HomeLandingRandomText :content="' HI'"/>
 
         </section>
