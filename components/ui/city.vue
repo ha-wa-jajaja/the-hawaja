@@ -11,8 +11,6 @@ import {
     Color,
     Fog,
     AmbientLight,
-    DirectionalLight,
-    HemisphereLight,
     PMREMGenerator,
     Vector3,
 } from "three";

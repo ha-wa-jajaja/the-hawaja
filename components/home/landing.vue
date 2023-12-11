@@ -4,8 +4,11 @@
             class="w-screen h-screen bg-transparent text-white flex flex-col-reverse items-start"
             ref="home_landing"
         >
-            <UiRandomText :content="' ITS JEFFREY'" />
-            <UiRandomText :content="' HI'" />
+            <!-- <UiRandomText :content="' IT&#8217S JEFFREY'" :wait-for-prev="true" :prev-done="text1Done"/>
+            <UiRandomText :content="' HI'" ref="text1"/> -->
+            <HomeLandingRandomText :content="' IT&#8217S JEFFREY'"/>
+            <HomeLandingRandomText :content="' HI'"/>
+
         </section>
     </UiStickyPinSection>
 </template>
@@ -42,5 +45,7 @@ watch(scrollProgress, (val) => {
         z: getCurrentPos("z"),
     });
 });
+
+const text1 = ref(null)
+const text1Done = computed(()=> text1.value?.done)
 </script>
-<style lang=""></style>

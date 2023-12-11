@@ -1,5 +1,11 @@
 <template>
-    <div class="text-[12vw] roboto relative z-10">
+    <div
+        class="text-[10vw] roboto relative z-10 font-semibold"
+        :class="{
+            'opacity-0':
+                props.waitForPrev && !props.prevDone,
+        }"
+    >
         {{ output }}
     </div>
 </template>
@@ -9,9 +15,17 @@ const props = defineProps({
         type: String,
         default: "",
     },
+    waitForPrev: {
+        type: Boolean,
+        default: false,
+    },
+    prevDone: {
+        type: Boolean,
+        default: false,
+    },
 });
 const theLetters = "1234567890abc!#%&^+=-";
-const speed = 30;
+const speed = 20;
 const increment = 6;
 
 const clen = ref(props.content.length);
@@ -20,7 +34,9 @@ let stri = 0;
 let block = "";
 let fixed = "";
 
-const output = ref("");
+const output = ref("&nbsp;");
+const done = computed(() => output.value === props.content);
+defineExpose({ done });
 
 const nextFrame = () => {
     for (let i = 0; i < clen.value - stri; i++) {
@@ -54,13 +70,16 @@ const rustle = (i) => {
     }, speed);
 };
 
+watch(
+    () => props.prevDone,
+    (val) => {
+        if (val && props.waitForPrev)
+            rustle(clen.value * increment + 1);
+    }
+);
+
 onMounted(() => {
-    rustle(clen.value * increment + 1);
+    if (!props.waitForPrev)
+        rustle(clen.value * increment + 1);
 });
 </script>
-<style lang="scss" scoped>
-.roboto {
-    font-family: "Roboto Mono", monospace;
-    font-weight: 400;
-}
-</style>
