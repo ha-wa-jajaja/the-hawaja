@@ -26,14 +26,12 @@ export const useFlickingCtrl = () => {
     }
 
     const slideIdx = ref<Number>(0);
-    const prevIdx = ref<Number>(0);
-    const nextIdx = ref<Number>(0);
+    const moveDir = ref<String | null>(null);
 
     function flickingChanged(ele: any) {
         slideIdx.value = ele.index;
-        if (notCircular.value) return;
-        prevIdx.value = ele.panel.prev()?._index ?? 0;
-        nextIdx.value = ele.panel.next()?._index ?? 0;
+
+        moveDir.value = ele.direction;
     }
 
     async function flickingNavigateTo(
@@ -49,8 +47,7 @@ export const useFlickingCtrl = () => {
         moving,
         flickingNavigate,
         slideIdx,
-        prevIdx,
-        nextIdx,
+        moveDir,
         flickingChanged,
         flickingNavigateTo,
         notCircular,

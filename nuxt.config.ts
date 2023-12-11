@@ -37,6 +37,7 @@ export default defineNuxtConfig({
         //'@zadigetvoltaire/nuxt-gtm',
         "nuxt-lenis",
         "@tresjs/nuxt",
+        "@nuxtjs/google-fonts",
     ],
     // doc: https://nuxt.com/docs/api/configuration/nuxt-config#postcss
     devServer: {
@@ -83,6 +84,10 @@ export default defineNuxtConfig({
                 wght: [300, 400, 600, 700],
             },
             "Source+Code+Pro": {
+                wght: [300, 400, 600, 700],
+            },
+
+            "DM+Sans": {
                 wght: [300, 400, 600, 700],
             },
         },

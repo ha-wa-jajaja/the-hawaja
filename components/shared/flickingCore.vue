@@ -58,6 +58,7 @@ const flicking = ref(null);
 
 const {
     slideIdx,
+    moveDir,
     flickingChanged,
     flickingNavigateTo,
     notCircular,
@@ -66,9 +67,12 @@ const {
 
 const emit = defineEmits(["sendIndex"]);
 
-watch(slideIdx, () => {
-    emit("sendIndex", slideIdx.value);
-});
+// watch(slideIdx, () => {
+//     emit("sendIndex", slideIdx.value);
+// });
+// watch(movingDir,()=>{
+
+// })
 
 function navTo(idx) {
     flickingNavigateTo(flicking, idx);
@@ -77,6 +81,8 @@ function navTo(idx) {
 defineExpose({
     navTo,
     flicking,
+    slideIdx,
+    moveDir,
 });
 
 const plugins = ref([]);
@@ -105,6 +111,4 @@ onMounted(async () => {
     setPlugins();
 });
 </script>
-<style>
-@import url("node_modules/@egjs/vue3-flicking/dist/flicking.css");
-</style>
+<style></style>

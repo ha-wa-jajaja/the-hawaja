@@ -1,4 +1,12 @@
-@import '@/assets/scss/base/typeface';
-@import '@/assets/scss/base/reset';
-@import '@/assets/scss/base/font';
-@import '@/assets/scss/base/page-transition';
+@import "@/assets/scss/base/typeface";
+@import "@/assets/scss/base/reset";
+@import "@/assets/scss/base/font";
+@import "@/assets/scss/base/page-transition";
+
+.roboto {
+    font-family: "Roboto", sans-serif;
+}
+
+.dm-sans {
+    font-family: "DM Sans", sans-serif;
+}

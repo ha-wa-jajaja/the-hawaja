@@ -2,15 +2,22 @@
     <section class="my-projects" ref="my_projects">
         <main class="container flex items-center h-full">
             <!-- slider -->
-            <section class="w-[540px] shrink-0">
-                <SharedFlickingCore
-                    ref="projects_flicking"
-                    @send-index="getIndex"
+            <section class="w-[540px] shrink-0 relative">
+                <div
+                    class="absolute top-0 left-0 -translate-y-1/2 -translate-x-12 z-10"
                 >
+                    <HomeProjectsProjectName
+                        :current-proj-name="
+                            active_item?.name
+                        "
+                        :rtl="moveDir === 'NEXT'"
+                    />
+                </div>
+                <SharedFlickingCore ref="projects_flicking">
                     <div
                         v-for="(project, index) in projects"
                         :key="`project-${project.key}`"
-                        class="bg-slate-400 w-full aspect-square"
+                        class="bg-slate-400 w-full aspect-square flex items-center justify-center"
                     >
                         <h1 class="text-h1">
                             {{ index }}
@@ -19,10 +26,7 @@
                 </SharedFlickingCore>
             </section>
             <section class="ml-16">
-                <h1 class="text-h1">
-                    {{ active_item?.name }}
-                </h1>
-                <p class="text-h4">
+                <p class="text-h4 mb-10">
                     Lorem ipsum dolor, sit amet consectetur
                     adipisicing elit. Iusto adipisci ea
                     facere ut eligendi, voluptatem
@@ -31,9 +35,7 @@
                     eaque reprehenderit, repellendus, labore
                     qui odio eum rerum!
                 </p>
-                <button class="bg-white p-10">
-                    view site
-                </button>
+                <UiButton />
             </section>
         </main>
 
@@ -49,31 +51,18 @@ gsap.registerPlugin(ScrollTrigger);
 import { projects } from "~/assets/json/projects.json";
 
 const my_projects = ref(null);
-const active_index = ref(0);
-function getIndex(num) {
-    active_index.value = num;
-}
+
+const projects_flicking = ref(null);
+const active_index = computed(
+    () => projects_flicking.value?.slideIdx
+);
+const moveDir = computed(
+    () => projects_flicking.value?.moveDir
+);
+
 const active_item = computed(
     () => projects[active_index.value]
 );
-
-let tl;
-function setupAnim() {
-    tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: my_projects.value,
-            start: "top top",
-            end: "bottom top",
-            pin: true,
-            scrub: true,
-        },
-    });
-}
-
-onMounted(async () => {
-    await nextTick();
-    setupAnim();
-});
 </script>
 <style lang="scss" scoped>
 .my-projects {

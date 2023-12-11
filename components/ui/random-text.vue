@@ -1,5 +1,7 @@
 <template>
-    <div class="text-[72px] roboto">{{ output }}</div>
+    <div class="text-[12vw] roboto relative z-10">
+        {{ output }}
+    </div>
 </template>
 <script setup>
 const props = defineProps({
@@ -56,7 +58,7 @@ onMounted(() => {
     rustle(clen.value * increment + 1);
 });
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .roboto {
     font-family: "Roboto Mono", monospace;
     font-weight: 400;
