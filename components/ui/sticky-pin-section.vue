@@ -36,6 +36,10 @@ const props = defineProps({
 });
 
 const stickyPinEl = ref(null);
+const { width, height: wrapperH } =
+    useElementSize(stickyPinEl);
+// every pixel per percentage
+const perPx = computed(() => wrapperH.value / 100);
 const progress = ref(0);
 let st;
 function setupSt() {
@@ -49,7 +53,7 @@ function setupSt() {
         },
     });
 }
-defineExpose({ progress });
+defineExpose({ progress, perPx });
 
 onMounted(async () => {
     await nextTick();

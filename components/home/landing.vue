@@ -21,7 +21,7 @@
             <HomeLandingGlitchText :content="'HI'"/>
         </section>
 
-        <HomeLandingScrollHint class="absolute top-10 right-10 max-lg:top-6 max-lg:right-6"/>
+        <HomeLandingScrollHint class="absolute top-10 right-10 max-lg:top-6 max-lg:right-6" ref="scroll_hint"/>
     </UiStickyPinSection>
 </template>
 <script setup>
@@ -32,6 +32,13 @@ const pinWrapper = ref(null);
 const scrollProgress = computed(
     () => pinWrapper.value?.progress
 );
+const perPx = computed(
+    () => pinWrapper.value?.perPx
+);
+const scroll_hint = ref(null)
+watch(scrollProgress,(progress)=>{
+    useTriggerRellax(scroll_hint,progress,0.5,perPx.value,1)
+})
 
 const cityInitPos = {
     x: 7.54,
