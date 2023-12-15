@@ -4,6 +4,7 @@
     </div>
 </template>
 <script setup lang="ts">
+// @ts-nocheck
 import {
     Scene,
     PerspectiveCamera,
@@ -17,11 +18,8 @@ import {
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
-
 import { useWindowSize } from "@vueuse/core";
-
 import { useGlobalStore } from "~/store";
-const store = useGlobalStore();
 
 const { width, height } = useWindowSize();
 const aspectRatio = computed(() => {
@@ -104,6 +102,7 @@ const loop = () => {
     requestAnimationFrame(loop);
 };
 
+const store = useGlobalStore();
 const camPos = computed(() => store.cityMove);
 const landingMovePer = computed(() => store.landingMovePer);
 

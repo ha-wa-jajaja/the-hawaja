@@ -8,7 +8,12 @@
             ref="overlay"
         ></div>
         <div
-            class="text-[10vw] roboto z-0 font-semibold glitch"
+            class="roboto z-0 glitch font-semibold"
+            :class="
+                $useMedia.min('lg')
+                    ? 'text-[10vw]'
+                    : 'text-[68px]'
+            "
             :data-text="props.content"
         >
             {{ props.content }}
@@ -35,7 +40,7 @@ const overlay = ref(null);
 function animateClip() {
     gsap.timeline({
         defaults: {
-            ease: "power2.inOut",
+            ease: "expo.out",
         },
     })
         .to(titleWrapper.value, {
@@ -72,7 +77,17 @@ onMounted(async () => {
     color: white;
     position: relative;
     margin: 0 auto;
+    font-size: 10vw;
+
+    @screen max-lg {
+        font-size: 14vw;
+    }
+
+    @screen max-sm {
+        font-size: 68px;
+    }
 }
+
 @keyframes noise-anim {
     $steps: 20;
     @for $i from 0 through $steps {

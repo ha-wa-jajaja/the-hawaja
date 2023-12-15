@@ -3,22 +3,20 @@
         class="test-place flex flex-col items-center justify-center relative"
     >
         <main class="container">
-            <div class="bg-black p-6" v-fade:clip>
+            <!-- <div class="bg-black p-6" v-fade:clip>
                 <div class="text-wrapper overflow-hidden">
                     <h1
-                        class="text-[72px] text-white font-bold"
+                        class="text-[72px] text-white font-bold roboto"
                     >
                         {{ $t("myProjects") }}
                     </h1>
                 </div>
-            </div>
+            </div> -->
             <UiExpandCircle
                 class="absolute top-0 right-0"
             />
             <UiTextRevealer>
-                <h1
-                    class="text-[72px] text-white font-bold"
-                >
+                <h1 class="text-[72px] text-white teko">
                     {{ $t("myProjects") }}
                 </h1>
             </UiTextRevealer>
@@ -48,7 +46,7 @@
                         8
                     </p>
                 </div>
-                <div class="flex mt-20">
+                <div class="flex mt-20 mb-10">
                     <button
                         class="bg-white p-4 mr-2"
                         @click="changeNum(false)"
@@ -61,6 +59,11 @@
                     >
                         next
                     </button>
+                </div>
+                <div
+                    class="tusker font-bold text-white text-[84px]"
+                >
+                    <p>SCROLL FOR<br />MORE</p>
                 </div>
             </div>
         </main>

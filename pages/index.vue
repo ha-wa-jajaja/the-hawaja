@@ -4,7 +4,7 @@
         <div class="relative z-10">
             <HomeLanding />
             <div
-                class="w-screen h-screen bg-[#34289180]"
+                class="w-screen h-screen bg-[#0c0821cc]"
             ></div>
         </div>
     </div>

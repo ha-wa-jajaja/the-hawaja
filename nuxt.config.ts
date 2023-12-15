@@ -83,10 +83,6 @@ export default defineNuxtConfig({
             "Roboto+Mono": {
                 wght: [300, 400, 600, 700],
             },
-            "Source+Code+Pro": {
-                wght: [300, 400, 600, 700],
-            },
-
             "DM+Sans": {
                 wght: [300, 400, 600, 700],
             },

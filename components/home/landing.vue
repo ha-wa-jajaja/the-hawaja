@@ -1,14 +1,24 @@
 <template>
     <UiStickyPinSection ref="pinWrapper" :height="100">
+        <!-- landing text > 992 -->
         <section
             class="w-screen h-screen bg-transparent text-white flex flex-col-reverse items-start"
             ref="home_landing"
+            v-if="$useMedia.min('ms')"
         >
-            <!-- <UiRandomText :content="' IT&#8217S JEFFREY'" :wait-for-prev="true" :prev-done="text1Done"/>
-            <UiRandomText :content="' HI'" ref="text1"/> -->
-            <HomeLandingRandomText :content="' IT&#8217S JEFFREY'" :timeout="200"/>
-            <HomeLandingRandomText :content="' HI'"/>
+            <HomeLandingGlitchText :content="' IT&#8217S JEFFREY'" :timeout="300"/>
+            <HomeLandingGlitchText :content="' HI'"/>
+        </section>
 
+        <!-- landing text < 992 -->
+        <section
+            class="w-screen h-screen bg-transparent text-white flex flex-col-reverse items-start"
+            ref="home_landing"
+            v-else
+        >
+            <HomeLandingGlitchText :content="'JEFFREY'" :timeout="600"/>
+            <HomeLandingGlitchText :content="' IT&#8217S'" :timeout="300"/>
+            <HomeLandingGlitchText :content="' HI'"/>
         </section>
     </UiStickyPinSection>
 </template>
@@ -46,6 +56,5 @@ watch(scrollProgress, (val) => {
     });
 });
 
-const text1 = ref(null)
-const text1Done = computed(()=> text1.value?.done)
+
 </script>
