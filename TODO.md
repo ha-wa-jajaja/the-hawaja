@@ -1,0 +1,2 @@
+-   Landing anim sequence: first load & after anim running sequence
+-   work trigger rellax
