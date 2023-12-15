@@ -1,5 +1,5 @@
 <template>
-    <UiStickyPinSection ref="pinWrapper" :height="100">
+    <UiStickyPinSection ref="pinWrapper" :height="150">
         <!-- landing text > 992 -->
         <section
             class="w-screen h-screen bg-transparent text-white flex flex-col-reverse items-start"
@@ -21,7 +21,7 @@
             <HomeLandingGlitchText :content="'HI'"/>
         </section>
 
-        <HomeLandingScrollHint class="absolute top-10 right-10"/>
+        <HomeLandingScrollHint class="absolute top-10 right-10 max-lg:top-6 max-lg:right-6"/>
     </UiStickyPinSection>
 </template>
 <script setup>

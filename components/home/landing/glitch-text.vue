@@ -45,11 +45,11 @@ function animateClip() {
     })
         .to(titleWrapper.value, {
             "--clip": "0%",
-            duration: 0.8,
+            duration: 1,
         })
         .to(
             overlay.value,
-            { "--clip": "100%", duration: 0.8 },
+            { "--clip": "100%", duration: 1 },
             0.6
         );
 }
