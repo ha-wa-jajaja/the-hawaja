@@ -6,8 +6,8 @@
             ref="home_landing"
             v-if="$useMedia.min('ms')"
         >
-            <HomeLandingGlitchText :content="' IT&#8217S JEFFREY'" :timeout="300"/>
-            <HomeLandingGlitchText :content="' HI'"/>
+            <HomeLandingGlitchText :content="'IT&#8217S JEFFREY'" :timeout="300"/>
+            <HomeLandingGlitchText :content="'HI'"/>
         </section>
 
         <!-- landing text < 992 -->
@@ -17,9 +17,11 @@
             v-else
         >
             <HomeLandingGlitchText :content="'JEFFREY'" :timeout="600"/>
-            <HomeLandingGlitchText :content="' IT&#8217S'" :timeout="300"/>
-            <HomeLandingGlitchText :content="' HI'"/>
+            <HomeLandingGlitchText :content="'IT&#8217S'" :timeout="300"/>
+            <HomeLandingGlitchText :content="'HI'"/>
         </section>
+
+        <HomeLandingScrollHint class="absolute top-10 right-10"/>
     </UiStickyPinSection>
 </template>
 <script setup>

@@ -4,8 +4,10 @@
         :style="{ height: `${height}dvh` }"
         ref="stickyPinEl"
     >
-        <div class="sticky top-0 w-fit h-fit">
-            <slot />
+        <div class="sticky top-0 w-full">
+            <div class="relative w-full">
+                <slot />
+            </div>
         </div>
     </section>
 </template>

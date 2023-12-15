@@ -1,11 +1,11 @@
 import { type Ref } from "vue";
 
 export const useObserver = (
-    el: any,
+    el: Ref,
     func: Function,
     runOnce?: Boolean
 ) => {
-    const target = el;
+    const target = el.value;
     const options = {
         threshold: [0.25],
     };
