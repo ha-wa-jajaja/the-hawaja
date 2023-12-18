@@ -27,10 +27,6 @@ const props = defineProps({
         type: String,
         default: "",
     },
-    timeout: {
-        type: Number,
-        default: 0,
-    },
 });
 </script>
 

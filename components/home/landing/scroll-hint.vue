@@ -1,5 +1,8 @@
 <template>
-    <div ref="hintWrapper" class="flex overflow-hidden">
+    <div
+        ref="hintWrapper"
+        class="flex overflow-hidden landing-scroll-hint"
+    >
         <div
             class="min-h-full w-1 mr-4 bg-[#5A5A5A] overflow-hidden scroll-sign max-md:mr-2"
         >

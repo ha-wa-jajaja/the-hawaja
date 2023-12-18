@@ -1,19 +1,19 @@
 <template>
     <UiStickyPinSection ref="pinWrapper" :height="150">
         <!-- landing text > 992 -->
-        <section class="absolute bottom-0 left-0 w-fit h-fit" ref="home_landing" v-if="$useMedia.min('ms')">
+        <section class="absolute bottom-0 left-0 w-fit h-fit" v-if="$useMedia.min('ms')">
             <HomeLandingGlitchText :content="'HI'" />
-            <HomeLandingGlitchText :content="'IT&#8217S JEFFREY'" :timeout="300" />
+            <HomeLandingGlitchText :content="'IT&#8217S JEFFREY'" />
         </section>
 
         <!-- landing text < 992 -->
-        <section class="absolute bottom-0 left-0 w-fit h-fit" ref="home_landing" v-else>
+        <section class="absolute bottom-0 left-0 w-fit h-fit" v-else>
             <HomeLandingGlitchText :content="'HI'" />
-            <HomeLandingGlitchText :content="'IT&#8217S'" :timeout="300" />
-            <HomeLandingGlitchText :content="'JEFFREY'" :timeout="600" />
+            <HomeLandingGlitchText :content="'IT&#8217S'" />
+            <HomeLandingGlitchText :content="'JEFFREY'" />
         </section>
 
-        <HomeLandingScrollHint class="absolute top-10 right-10 max-lg:top-6 max-lg:right-6" />
+        <HomeLandingScrollHint class="absolute top-10 right-10 max-lg:top-6 max-lg:right-6" ref="scroll_hint" />
     </UiStickyPinSection>
 </template>
 <script setup>
@@ -43,6 +43,8 @@ function getCurrentPos(key) {
         cityEndMargin[key] * scrollProgress.value
     );
 }
+
+const scroll_hint = ref(null)
 watch(scrollProgress, (val) => {
     store.setLandingMovePer(val);
     store.setCityMove({
@@ -50,6 +52,8 @@ watch(scrollProgress, (val) => {
         y: getCurrentPos("y"),
         z: getCurrentPos("z"),
     });
+
+    // useTriggerRellax(".landing-scroll-hint", val, 0.1, 1)
 });
 
 function landingAnim() {
@@ -78,6 +82,7 @@ function landingAnim() {
 onMounted(async () => {
     await nextTick()
     landingAnim()
+
 })
 
 </script>
