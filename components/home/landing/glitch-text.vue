@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-fit h-fit relative title-wrapper"
+        class="w-fit h-fit relative landing-title-wrapper"
         ref="titleWrapper"
     >
         <div
@@ -8,7 +8,7 @@
             ref="overlay"
         ></div>
         <div
-            class="roboto z-0 glitch font-semibold"
+            class="roboto z-0 glitch font-semibold w-fit"
             :class="
                 $useMedia.min('lg')
                     ? 'text-[10vw]'
@@ -22,8 +22,6 @@
 </template>
 
 <script setup>
-import gsap from "gsap";
-
 const props = defineProps({
     content: {
         type: String,
@@ -34,34 +32,10 @@ const props = defineProps({
         default: 0,
     },
 });
-
-const titleWrapper = ref(null);
-const overlay = ref(null);
-function animateClip() {
-    gsap.timeline({
-        defaults: {
-            ease: "expo.out",
-        },
-    })
-        .to(titleWrapper.value, {
-            "--clip": "0%",
-            duration: 1,
-        })
-        .to(
-            overlay.value,
-            { "--clip": "100%", duration: 1 },
-            0.6
-        );
-}
-
-onMounted(async () => {
-    await nextTick();
-    setTimeout(animateClip, props.timeout);
-});
 </script>
 
 <style lang="scss" scoped>
-.title-wrapper {
+.landing-title-wrapper {
     --clip: 100%;
     -webkit-clip-path: inset(0 var(--clip) 0 0);
     clip-path: inset(0 var(--clip) 0 0);

@@ -4,8 +4,8 @@
         :style="{ height: `${height}dvh` }"
         ref="stickyPinEl"
     >
-        <div class="sticky top-0 w-full">
-            <div class="relative w-full">
+        <div class="sticky top-0 w-full h-[100dvh]">
+            <div class="relative w-full h-full">
                 <slot />
             </div>
         </div>
@@ -33,13 +33,19 @@ const props = defineProps({
         type: String,
         default: "bottom top",
     },
+    hasOnEnter: {
+        type: Boolean,
+        default: false,
+    },
+    hasOnEnterBack: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const stickyPinEl = ref(null);
-const { width, height: wrapperH } =
-    useElementSize(stickyPinEl);
-// every pixel per percentage
-const perPx = computed(() => wrapperH.value / 100);
+const emits = defineEmits(["doOnEnter", "doOnEnterBack"]);
+
 const progress = ref(0);
 let st;
 function setupSt() {
@@ -51,9 +57,16 @@ function setupSt() {
         onUpdate: (self) => {
             progress.value = self.progress.toFixed(8);
         },
+        onEnter: (self) => {
+            if (props.hasOnEnter) emits("doOnEnter");
+        },
+        onEnterBack: (self) => {
+            if (props.hasOnEnterBack)
+                emits("doOnEnterBack");
+        },
     });
 }
-defineExpose({ progress, perPx });
+defineExpose({ progress });
 
 onMounted(async () => {
     await nextTick();

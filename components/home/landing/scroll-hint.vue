@@ -24,26 +24,9 @@ const hintWrapper = ref(null);
 
 const texts = ["SCROLL FOR", "MORE"];
 
-function runAnim() {
-    gsap.timeline({
-        defaults: {
-            ease: "expo.out",
-            duration: 0.5,
-        },
-    })
-        .to(".scroll-hint p", {
-            yPercent: 0,
-            stagger: 0.2,
-            delay: 1.5,
-        })
-        .to(".scroll-sign", { opacity: 1, xPercent: 0 });
-}
-
 onMounted(async () => {
     gsap.set(".scroll-hint p", { yPercent: 110 });
     gsap.set(".scroll-sign", { xPercent: 100, opacity: 0 });
-    await nextTick();
-    useObserver(hintWrapper, runAnim, true);
 });
 </script>
 <style lang="scss" scoped>
