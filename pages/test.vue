@@ -16,8 +16,10 @@
                 class="absolute top-0 right-0"
             />
             <UiTextRevealer>
-                <h1 class="text-[72px] text-white teko">
-                    {{ $t("myProjects") }}
+                <h1
+                    class="text-[100px] text-white tusker font-bold"
+                >
+                    {{ $t("who") }}
                 </h1>
             </UiTextRevealer>
             <div
