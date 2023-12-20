@@ -16,19 +16,21 @@
 <script setup>
 import gsap from "gsap";
 
-const wrapper = ref(null);
+const wrapper = ref();
 const { width } = useElementBounding(wrapper);
 
+const emits = defineEmits(["animEnd"]);
 let tl;
-let ctx = ref(null);
+let ctx;
 function setupAnim() {
-    ctx.value = gsap.context((self) => {
+    ctx = gsap.context((self) => {
         const stick = self.selector(".stick");
         const contentWrap = self.selector(".content-wrap");
         const content = self.selector(".content");
-        gsap.set(content, { scale: 0.9 });
+        gsap.set(content, { scale: 0.8 });
         tl = gsap
             .timeline({
+                paused: true,
                 defaults: {
                     ease: "expo.inOut",
                     duration: 0.8,
@@ -38,33 +40,25 @@ function setupAnim() {
             .to(contentWrap, { "--clip": "0" }, 0)
             .to(content, {
                 scale: 1,
-                duration: 0.5,
-            });
+                duration: 0.2,
+                ease: "none",
+            })
+            .call(() => emits("animEnd"));
     }, wrapper.value); // <- Scope!
 }
 
-function setObserver() {
-    const target = wrapper.value;
-    const options = {
-        threshold: [0.25],
-    };
-    let callback = (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                tl.play();
-            }
-        });
-    };
-    let observer = new IntersectionObserver(
-        callback,
-        options
+function playAnim() {
+    return new Promise((resolve) =>
+        tl.play().call(() => resolve())
     );
-    observer.observe(target);
 }
+defineExpose({ playAnim });
 
 onMounted(() => {
     setupAnim();
-    setObserver();
+});
+onUnmounted(() => {
+    ctx.revert();
 });
 </script>
 <style scoped>

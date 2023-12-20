@@ -33,14 +33,6 @@ const props = defineProps({
         type: String,
         default: "bottom top",
     },
-    hasOnEnter: {
-        type: Boolean,
-        default: false,
-    },
-    hasOnEnterBack: {
-        type: Boolean,
-        default: false,
-    },
 });
 
 const stickyPinEl = ref(null);
@@ -58,11 +50,10 @@ function setupSt() {
             progress.value = self.progress.toFixed(8);
         },
         onEnter: (self) => {
-            if (props.hasOnEnter) emits("doOnEnter");
+            emits("doOnEnter");
         },
         onEnterBack: (self) => {
-            if (props.hasOnEnterBack)
-                emits("doOnEnterBack");
+            emits("doOnEnterBack");
         },
     });
 }

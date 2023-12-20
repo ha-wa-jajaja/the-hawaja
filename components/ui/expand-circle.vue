@@ -26,16 +26,18 @@ const props = defineProps({
 const uniqueId = computed(
     () => "bg-circle-" + props.circleId
 );
-defineExpose({ uniqueId });
 
+let tl;
 const circle = ref(null);
-function expandCircle() {
+function setupAnim() {
     gsap.set(circle.value, { "--clip": "30" });
-    gsap.timeline({
-        defaults: {
-            ease: "circ.inOut",
-        },
-    })
+    tl = gsap
+        .timeline({
+            paused: true,
+            defaults: {
+                ease: "circ.inOut",
+            },
+        })
         .to(circle.value, {
             "--clip": "37",
             duration: 0.6,
@@ -45,9 +47,18 @@ function expandCircle() {
             duration: 0.6,
         });
 }
-// onMounted(() => {
-//     expandCircle();
-// });
+
+function playAnim() {
+    return new Promise((resolve) =>
+        tl.play().call(() => resolve())
+    );
+}
+
+defineExpose({ uniqueId, playAnim });
+
+onMounted(() => {
+    setupAnim();
+});
 </script>
 <style scoped>
 .bg-circle {
