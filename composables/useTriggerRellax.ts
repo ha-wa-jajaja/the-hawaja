@@ -15,6 +15,6 @@ export const useTriggerRellax = (
         (currPer - triggerPt) / (1 - triggerPt);
 
     gsap.to(el, {
-        yPercent: Math.ceil(availableTrans * transProgress),
+        yPercent: availableTrans * transProgress,
     });
 };

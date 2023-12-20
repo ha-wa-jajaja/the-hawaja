@@ -8,6 +8,7 @@
     <div
         ref="circle"
         class="bg-circle rounded-full w-[400px] h-[400px] p-[60px]"
+        :class="uniqueId"
     >
         <div
             class="w-full h-full rounded-full border-[10px] border-[#6f00b4] translate-x-full border-solid"
@@ -16,6 +17,17 @@
 </template>
 <script setup>
 import gsap from "gsap";
+const props = defineProps({
+    circleId: {
+        type: String,
+        default: "",
+    },
+});
+const uniqueId = computed(
+    () => "bg-circle-" + props.circleId
+);
+defineExpose({ uniqueId });
+
 const circle = ref(null);
 function expandCircle() {
     gsap.set(circle.value, { "--clip": "30" });
