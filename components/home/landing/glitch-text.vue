@@ -47,7 +47,7 @@ const props = defineProps({
     color: white;
     position: relative;
     margin: 0 auto;
-    font-size: 10vw;
+    font-size: min(10vw, 192px);
 
     @screen max-lg {
         font-size: 14vw;

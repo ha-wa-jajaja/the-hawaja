@@ -1,19 +1,22 @@
 <template>
     <UiStickyPinSection ref="pinWrapper" :height="150">
-        <!-- landing text > 992 -->
-        <section class="absolute bottom-0 left-0 w-fit h-fit" v-if="$useMedia.min('ms')">
-            <HomeLandingGlitchText :content="'HI'" />
-            <HomeLandingGlitchText :content="'IT&#8217S JEFFREY'" />
-        </section>
+        <div class="w-full h-full mx-0 my-auto max-w-[1920px] relative">
 
-        <!-- landing text < 992 -->
-        <section class="absolute bottom-0 left-0 w-fit h-fit" v-else>
-            <HomeLandingGlitchText :content="'HI'" />
-            <HomeLandingGlitchText :content="'IT&#8217S'" />
-            <HomeLandingGlitchText :content="'JEFFREY'" />
-        </section>
-
-        <HomeLandingScrollHint class="absolute top-10 right-10 max-lg:top-6 max-lg:right-6" ref="scroll_hint" />
+            <!-- landing text > 992 -->
+            <section class="absolute bottom-0 left-0 w-fit h-fit" v-if="$useMedia.min('ms')">
+                <HomeLandingGlitchText :content="'HI'" />
+                <HomeLandingGlitchText :content="'IT&#8217S JEFFREY'" />
+            </section>
+    
+            <!-- landing text < 992 -->
+            <section class="absolute bottom-0 left-0 w-fit h-fit" v-else>
+                <HomeLandingGlitchText :content="'HI'" />
+                <HomeLandingGlitchText :content="'IT&#8217S'" />
+                <HomeLandingGlitchText :content="'JEFFREY'" />
+            </section>
+    
+            <HomeLandingScrollHint class="absolute top-10 right-10 max-lg:top-6 max-lg:right-6" ref="scroll_hint" />
+        </div>
     </UiStickyPinSection>
 </template>
 <script setup>

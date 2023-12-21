@@ -1,19 +1,9 @@
 <template>
-    <button
-        class="fixed top-0 right-0 p-4 font-bold bg-white text-black"
-        @click="expandCircle()"
-    >
-        expand circle
-    </button>
     <div
         ref="circle"
         class="bg-circle rounded-full w-[400px] h-[400px] p-[60px]"
         :class="uniqueId"
-    >
-        <div
-            class="w-full h-full rounded-full border-[10px] border-[#6f00b4] translate-x-full border-solid"
-        ></div>
-    </div>
+    ></div>
 </template>
 <script setup>
 import gsap from "gsap";

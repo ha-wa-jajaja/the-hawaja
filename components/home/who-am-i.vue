@@ -5,14 +5,16 @@
         :has-on-enter="true"
         @do-on-enter="enterAnim"
     >
-        <UiTextRevealer ref="title">
-            <h1
-                class="text-[100px] text-white tusker font-bold"
-            >
-                {{ $t("who") }}
-            </h1>
-        </UiTextRevealer>
-        <UiExpandCircle ref="circle" />
+        <div class="container h-full">
+            <UiTextRevealer ref="title">
+                <h1
+                    class="text-[100px] text-white tusker font-bold"
+                >
+                    {{ $t("who") }}
+                </h1>
+            </UiTextRevealer>
+            <UiExpandCircle ref="circle" />
+        </div>
     </UiStickyPinSection>
 </template>
 <script setup>
