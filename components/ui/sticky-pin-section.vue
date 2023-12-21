@@ -5,7 +5,7 @@
         ref="stickyPinEl"
     >
         <div
-            class="sticky top-0 w-full h-[100dvh] flex items-center justify-center"
+            class="sticky top-0 w-full h-[100dvh] flex items-center justify-center overflow-hidden"
         >
             <slot />
         </div>

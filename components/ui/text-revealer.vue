@@ -42,8 +42,7 @@ function setupAnim() {
                 scale: 1,
                 duration: 0.2,
                 ease: "none",
-            })
-            .call(() => emits("animEnd"));
+            });
     }, wrapper.value); // <- Scope!
 }
 
