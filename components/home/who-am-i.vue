@@ -1,12 +1,15 @@
 <template>
     <UiStickyPinSection
-        :height="300"
         ref="pinWrapper"
-        :has-on-enter="true"
+        :height="300"
+        :st-end="'bottom bottom'"
         @do-on-enter="enterAnim"
+        @do-on-enter-back="enterAnim"
+        @do-on-leave="reverseCircles"
+        @do-on-leave-back="reverseCircles"
     >
         <main
-            class="container h-full flex justify-between relative"
+            class="container h-full flex justify-between relative pageWhoAmI"
             ref="pageWhoAmI"
         >
             <button
@@ -50,6 +53,16 @@
                 class="absolute bottom-0 left-0 scale-[1.8] pointer-events-none translate-y-[40%] -z-10 -translate-x-full"
                 :circle-id="'whoAmI-bg-2'"
             />
+            <img
+                src="/cross-fill.svg"
+                alt=""
+                class="cross-fill absolute bottom-0 right-0 pointer-events-none -z-10"
+            />
+            <img
+                src="/cross-stroke.svg"
+                alt=""
+                class="cross-stroke absolute top-0 left-0 pointer-events-none -z-10"
+            />
         </main>
     </UiStickyPinSection>
 </template>
@@ -61,12 +74,24 @@ const scrollProgress = computed(
 );
 watch(scrollProgress, (progress) => {
     useUpdateCityPos("whoAmI", progress);
-    useTriggerRellax(circleClass.value, progress, 0.5, 0.6);
+    useTriggerRellax(circleClass.value, progress, 0.2, 0.6);
     useTriggerRellax(
         circle2Class.value,
         progress,
-        0.5,
+        0.2,
         -0.4
+    );
+    useTriggerRellax(
+        ".pageWhoAmI .cross-fill",
+        progress,
+        0.3,
+        -0.3
+    );
+    useTriggerRellax(
+        ".pageWhoAmI .cross-stroke",
+        progress,
+        0.4,
+        0.2
     );
 });
 
@@ -83,6 +108,7 @@ const circle2Class = computed(
 let tl;
 let ctx;
 const pageWhoAmI = ref();
+const playedAnim = ref(false);
 function setupAnim() {
     ctx = gsap.context((self) => {
         const picWrap = self.selector(".profile-pic");
@@ -90,10 +116,22 @@ function setupAnim() {
             ".profile-pic .circle"
         );
         const pic = self.selector(".profile-pic img");
+        const crossFill = self.selector(".cross-fill");
+        const crossStroke = self.selector(".cross-stroke");
 
         gsap.set(picWrap, { xPercent: 100 });
         gsap.set(picCircle, { scale: 0 });
         gsap.set(pic, { scale: 0 });
+        gsap.set(crossFill, {
+            xPercent: -40,
+            yPercent: 25,
+            scale: 0,
+        });
+        gsap.set(crossStroke, {
+            xPercent: -50,
+            yPercent: -10,
+            scale: 0,
+        });
 
         tl = gsap
             .timeline({
@@ -120,19 +158,33 @@ function setupAnim() {
                 duration: 0.8,
                 ease: "expo.inOut",
             })
+            .to(crossFill, { scale: 1, duration: 0.4 }, "<")
             .to(circleClass.value, {
                 xPercent: 40,
                 duration: 0.8,
-            });
+            })
+            .to(crossFill, { duration: 0.5, rotate: 90 })
+            .to(
+                crossStroke,
+                { scale: 0.5, duration: 0.4 },
+                "<"
+            )
+            .call(() => (playedAnim.value = true));
     }, pageWhoAmI.value);
 }
 
 function enterAnim() {
-    tl.play();
-    // title.value
-    //     ?.playAnim()
-    //     .then(() => circle.value?.playAnim());
+    if (!playedAnim.value) tl.play();
+    else {
+        circle.value?.playAnim();
+        circle2.value?.playAnim();
+    }
 }
+function reverseCircles() {
+    circle.value?.reverseAnim();
+    circle2.value?.reverseAnim();
+}
+
 onMounted(() => {
     setupAnim();
 });
@@ -140,4 +192,4 @@ onUnmounted(() => {
     ctx.revert();
 });
 </script>
-<style lang=""></style>
+<style lang="" scoped></style>

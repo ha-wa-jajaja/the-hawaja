@@ -43,8 +43,13 @@ function playAnim() {
         tl.play().call(() => resolve())
     );
 }
+function reverseAnim() {
+    return new Promise((resolve) =>
+        tl.reverse().call(() => resolve())
+    );
+}
 
-defineExpose({ uniqueClass, playAnim });
+defineExpose({ uniqueClass, playAnim, reverseAnim });
 
 onMounted(() => {
     setupAnim();
