@@ -1,6 +1,6 @@
 <template>
     <UiStickyPinSection ref="pinWrapper" :height="150">
-        <div class="w-full h-full mx-0 my-auto max-w-[1920px] relative">
+        <main class="w-full h-full mx-0 my-auto max-w-[1920px] relative">
 
             <!-- landing text > 992 -->
             <section class="absolute bottom-0 left-0 w-fit h-fit" v-if="$useMedia.min('ms')">
@@ -16,11 +16,10 @@
             </section>
     
             <HomeLandingScrollHint class="absolute top-10 right-10 max-lg:top-6 max-lg:right-6"  />
-        </div>
+        </main>
     </UiStickyPinSection>
 </template>
 <script setup>
-import { useGlobalStore } from "~/store";
 import gsap from "gsap";
 
 const pinWrapper = ref(null);
@@ -29,12 +28,12 @@ const scrollProgress = computed(
 );
 watch(scrollProgress, (val) => {
     useUpdateCityPos("landing",val)
-
-    // useTriggerRellax(".landing-scroll-hint", val, 0.1, 1)
 });
 
+let tl;
 function landingAnim() {
-    gsap.timeline({
+    tl = gsap.timeline({
+        paused:true,
         defaults: {
             ease: "expo.out",
         },
@@ -57,8 +56,9 @@ function landingAnim() {
 }
 
 onMounted(async () => {
-    await nextTick()
     landingAnim()
+    await nextTick()
+    tl.play()
 })
 
 </script>

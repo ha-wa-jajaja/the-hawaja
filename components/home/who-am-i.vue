@@ -5,19 +5,13 @@
         :st-end="'bottom bottom'"
         @do-on-enter="enterAnim"
         @do-on-enter-back="enterAnim"
-        @do-on-leave="reverseCircles"
-        @do-on-leave-back="reverseCircles"
+        @do-on-leave="leaveAnim"
+        @do-on-leave-back="leaveAnim"
     >
         <main
             class="container h-full flex justify-between relative pageWhoAmI"
             ref="pageWhoAmI"
         >
-            <button
-                class="fixed top-0 right-0 bg-white p-5 text-black z-[999]"
-                @click="tl.play()"
-            >
-                play anim
-            </button>
             <section class="w-2/5 flex items-center">
                 <div
                     class="profile-pic w-full aspect-square"
@@ -34,13 +28,24 @@
                 </div>
             </section>
             <section class="w-1/2 flex items-center">
-                <UiTextRevealer ref="title">
-                    <h1
-                        class="text-[140px] text-white tusker font-bold"
+                <div class="w-full">
+                    <UiTextRevealer ref="title">
+                        <h1
+                            class="text-[140px] text-white tusker font-bold"
+                        >
+                            {{ $t("who") }}
+                        </h1>
+                    </UiTextRevealer>
+                    <div
+                        class="mt-10 w-full overflow-hidden"
                     >
-                        {{ $t("who") }}
-                    </h1>
-                </UiTextRevealer>
+                        <div
+                            class="text-white text-2xl font-semibold roboto intro-text"
+                        >
+                            {{ $t("intro") }}
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <UiExpandCircle
@@ -82,12 +87,6 @@ watch(scrollProgress, (progress) => {
         -0.4
     );
     useTriggerRellax(
-        ".pageWhoAmI .cross-fill",
-        progress,
-        0.3,
-        -0.3
-    );
-    useTriggerRellax(
         ".pageWhoAmI .cross-stroke",
         progress,
         0.4,
@@ -106,6 +105,7 @@ const circle2Class = computed(
 );
 
 let tl;
+let leaveTl;
 let ctx;
 const pageWhoAmI = ref();
 const playedAnim = ref(false);
@@ -118,6 +118,7 @@ function setupAnim() {
         const pic = self.selector(".profile-pic img");
         const crossFill = self.selector(".cross-fill");
         const crossStroke = self.selector(".cross-stroke");
+        const introText = self.selector(".intro-text");
 
         gsap.set(picWrap, { xPercent: 100 });
         gsap.set(picCircle, { scale: 0 });
@@ -131,6 +132,10 @@ function setupAnim() {
             xPercent: -50,
             yPercent: -10,
             scale: 0,
+        });
+        gsap.set(introText, {
+            opacity: 0,
+            yPercent: 20,
         });
 
         tl = gsap
@@ -163,13 +168,35 @@ function setupAnim() {
                 xPercent: 40,
                 duration: 0.8,
             })
-            .to(crossFill, { duration: 0.5, rotate: 90 })
+            .to(
+                introText,
+                {
+                    opacity: 1,
+                    yPercent: 0,
+                    duration: 0.5,
+                },
+                "<"
+            )
+            .to(
+                crossFill,
+                { duration: 0.6, rotate: 90 },
+                "<+=0.2"
+            )
             .to(
                 crossStroke,
                 { scale: 0.5, duration: 0.4 },
                 "<"
             )
+
             .call(() => (playedAnim.value = true));
+
+        leaveTl = gsap
+            .timeline({
+                paused: true,
+                defaults: { ease: "expo.out", opacity: 0 },
+            })
+            .to(crossFill, { scale: 0.6, duration: 0.4 })
+            .to(crossStroke, { scale: 0.8, duration: 0.3 });
     }, pageWhoAmI.value);
 }
 
@@ -178,11 +205,13 @@ function enterAnim() {
     else {
         circle.value?.playAnim();
         circle2.value?.playAnim();
+        leaveTl.reverse();
     }
 }
-function reverseCircles() {
+function leaveAnim() {
     circle.value?.reverseAnim();
     circle2.value?.reverseAnim();
+    leaveTl.play();
 }
 
 onMounted(() => {
