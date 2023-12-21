@@ -6,7 +6,7 @@ export const useGlobalStore = defineStore("global", {
     state: () => ({
         pageLoading: false,
         cityMove: {},
-        landingMovePer: 0,
+        cityMoveTrigger: 0,
     }),
 
     actions: {
@@ -27,8 +27,8 @@ export const useGlobalStore = defineStore("global", {
         setCityMove(pos: object) {
             this.cityMove = pos;
         },
-        setLandingMovePer(progress: number) {
-            this.landingMovePer = progress;
+        setCityMoveTrigger(progress: number) {
+            this.cityMoveTrigger = progress;
         },
     },
 });

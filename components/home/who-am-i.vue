@@ -1,6 +1,6 @@
 <template>
     <UiStickyPinSection
-        :height="200"
+        :height="300"
         ref="pinWrapper"
         :has-on-enter="true"
         @do-on-enter="enterAnim"
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </section>
-            <section class="w-1/2">
+            <section class="w-1/2 flex items-center">
                 <UiTextRevealer ref="title">
                     <h1
                         class="text-[140px] text-white tusker font-bold"
@@ -42,7 +42,13 @@
 
             <UiExpandCircle
                 ref="circle"
-                class="absolute top-0 right-0 scale-[2] pointer-events-none -translate-y-[40%]"
+                class="absolute top-0 right-0 scale-[2] pointer-events-none -translate-y-[40%] -z-10"
+                :circle-id="'whoAmI-bg-1'"
+            />
+            <UiExpandCircle
+                ref="circle2"
+                class="absolute bottom-0 left-0 scale-[1.8] pointer-events-none translate-y-[40%] -z-10 -translate-x-full"
+                :circle-id="'whoAmI-bg-2'"
             />
         </main>
     </UiStickyPinSection>
@@ -53,9 +59,26 @@ const pinWrapper = ref(null);
 const scrollProgress = computed(
     () => pinWrapper.value?.progress
 );
+watch(scrollProgress, (progress) => {
+    useUpdateCityPos("whoAmI", progress);
+    useTriggerRellax(circleClass.value, progress, 0.5, 0.6);
+    useTriggerRellax(
+        circle2Class.value,
+        progress,
+        0.5,
+        -0.4
+    );
+});
 
 const title = ref();
 const circle = ref();
+const circleClass = computed(
+    () => circle.value?.uniqueClass
+);
+const circle2 = ref();
+const circle2Class = computed(
+    () => circle2.value?.uniqueClass
+);
 
 let tl;
 let ctx;
@@ -90,13 +113,14 @@ function setupAnim() {
                 duration: 0.35,
                 transformOrigin: "bottom",
             })
+            .call(() => circle2.value?.playAnim())
             .call(() => title.value?.playAnim())
             .to(picWrap, {
                 xPercent: 0,
                 duration: 0.8,
                 ease: "expo.inOut",
             })
-            .to(".bg-circle", {
+            .to(circleClass.value, {
                 xPercent: 40,
                 duration: 0.8,
             });
@@ -104,6 +128,7 @@ function setupAnim() {
 }
 
 function enterAnim() {
+    tl.play();
     // title.value
     //     ?.playAnim()
     //     .then(() => circle.value?.playAnim());

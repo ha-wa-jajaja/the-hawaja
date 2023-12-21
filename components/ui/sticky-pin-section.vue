@@ -36,7 +36,12 @@ const props = defineProps({
 });
 
 const stickyPinEl = ref(null);
-const emits = defineEmits(["doOnEnter", "doOnEnterBack"]);
+const emits = defineEmits([
+    "doOnEnter",
+    "doOnEnterBack",
+    "doOnLeave",
+    "doOnLeaveBack",
+]);
 
 const progress = ref(0);
 let st;
@@ -49,11 +54,17 @@ function setupSt() {
         onUpdate: (self) => {
             progress.value = self.progress.toFixed(8);
         },
-        onEnter: (self) => {
+        onEnter: () => {
             emits("doOnEnter");
         },
-        onEnterBack: (self) => {
+        onEnterBack: () => {
             emits("doOnEnterBack");
+        },
+        onLeave: () => {
+            emits("doOnLeave");
+        },
+        onLeaveBack: () => {
+            emits("doOnLeaveBack");
         },
     });
 }

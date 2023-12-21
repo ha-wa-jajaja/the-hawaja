@@ -104,9 +104,11 @@ const loop = () => {
 
 const store = useGlobalStore();
 const camPos = computed(() => store.cityMove);
-const landingMovePer = computed(() => store.landingMovePer);
+const cityMoveTrigger = computed(
+    () => store.cityMoveTrigger
+);
 
-watch(landingMovePer, () => {
+watch(cityMoveTrigger, () => {
     const pos = camPos.value;
     camera.position.lerp(
         new Vector3(pos.x, pos.y, pos.z),

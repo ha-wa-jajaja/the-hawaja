@@ -2,7 +2,7 @@
     <div
         ref="circle"
         class="bg-circle rounded-full w-[400px] h-[400px] p-[60px]"
-        :class="uniqueId"
+        :class="uniqueClass.slice(1)"
     ></div>
 </template>
 <script setup>
@@ -13,8 +13,8 @@ const props = defineProps({
         default: "",
     },
 });
-const uniqueId = computed(
-    () => "bg-circle-" + props.circleId
+const uniqueClass = computed(
+    () => ".bg-circle-" + props.circleId
 );
 
 let tl;
@@ -44,7 +44,7 @@ function playAnim() {
     );
 }
 
-defineExpose({ uniqueId, playAnim });
+defineExpose({ uniqueClass, playAnim });
 
 onMounted(() => {
     setupAnim();
