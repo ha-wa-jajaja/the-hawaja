@@ -22,6 +22,7 @@ const { width } = useElementBounding(wrapper);
 const emits = defineEmits(["animEnd"]);
 let tl;
 let ctx;
+const refTl = shallowRef();
 function setupAnim() {
     ctx = gsap.context((self) => {
         const stick = self.selector(".stick");
@@ -43,6 +44,7 @@ function setupAnim() {
                 duration: 0.2,
                 ease: "none",
             });
+        refTl.value = tl;
     }, wrapper.value); // <- Scope!
 }
 
@@ -51,7 +53,7 @@ function playAnim() {
         tl.play().call(() => resolve())
     );
 }
-defineExpose({ playAnim });
+defineExpose({ playAnim, refTl });
 
 onMounted(() => {
     setupAnim();
