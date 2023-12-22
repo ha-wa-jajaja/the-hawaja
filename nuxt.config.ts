@@ -81,7 +81,7 @@ export default defineNuxtConfig({
     googleFonts: {
         families: {
             "Roboto+Mono": {
-                wght: [300, 400, 600, 700],
+                wght: [100, 300, 400, 600, 700],
             },
             "DM+Sans": {
                 wght: [300, 400, 600, 700],

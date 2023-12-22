@@ -1,0 +1,15 @@
+{
+    "skills": [
+        { "name": "Vue.js", "icon": "vue.svg" },
+        { "name": "Nuxt.js", "icon": "nuxt.svg" },
+        { "name": "HTML", "icon": "html.svg" },
+        { "name": "Javascript", "icon": "js.svg" },
+        { "name": "CSS", "icon": "css.svg" },
+        { "name": "Tailwind css", "icon": "tailwind.svg" },
+        { "name": "SASS", "icon": "sass.svg" },
+        { "name": "GSAP", "icon": "gsap.svg" },
+        { "name": "React.js", "icon": "react.svg" },
+        { "name": "Puppeteer", "icon": "puppeteer.svg" },
+        { "name": "Python", "icon": "python.svg" }
+    ]
+}

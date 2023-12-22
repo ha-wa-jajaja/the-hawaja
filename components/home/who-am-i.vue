@@ -180,7 +180,7 @@ function setupAnim() {
             .to(
                 crossFill,
                 { duration: 0.6, rotate: 90 },
-                "<+=0.2"
+                "<"
             )
             .to(
                 crossStroke,
