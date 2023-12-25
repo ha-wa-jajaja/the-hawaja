@@ -1,59 +1,77 @@
 {
     "skills": [
         {
-            "name": "Vue.js",
-            "icon": "vue.svg",
-            "gradients": ["#35495e", "#41b883"]
-        },
-        {
             "name": "Nuxt.js",
             "icon": "nuxt.svg",
+            "gridPos": "row-span-5 col-span-1",
             "gradients": ["#00dc82", "#80eec0"]
         },
         {
+            "name": "Vue.js",
+            "icon": "vue.svg",
+            "gridPos": "row-span-3 col-span-1",
+
+            "gradients": ["#35495e", "#41b883"]
+        },
+
+        {
             "name": "HTML",
             "icon": "html.svg",
+            "gridPos": "row-span-2 col-span-1",
+
             "gradients": ["#e44f26", "#f1662a"]
         },
 
         {
-            "name": "Javascript",
-            "icon": "js.svg",
-            "gradients": ["#f7df1e", "#050504"]
-        },
-        {
             "name": "CSS",
             "icon": "css.svg",
+            "gridPos": "row-span-2 col-span-1",
             "gradients": ["#1572b6", "#33a9dc"]
         },
         {
-            "name": "Tailwind css",
-            "icon": "tailwind.svg",
-            "gradients": ["#1572b6", "#33a9dc"]
-        },
-        {
-            "name": "SASS",
-            "icon": "sass.svg",
-            "gradients": ["#1ab1ba", "#12cab7"]
+            "name": "Javascript",
+            "icon": "js.svg",
+            "gridPos": "row-span-2 col-span-2",
+
+            "gradients": ["#f7df1e", "#050504"]
         },
         {
             "name": "GSAP",
             "icon": "gsap.svg",
+            "gridPos": "row-span-1 col-span-3",
+
             "gradients": ["#537727", "#8ac640"]
         },
         {
-            "name": "React.js",
-            "icon": "react.svg",
-            "gradients": ["#04d4fc", "#08dcfc"]
+            "name": "SASS",
+            "icon": "sass.svg",
+            "gridPos": "row-span-3 col-span-1",
+            "gradients": ["#1ab1ba", "#12cab7"]
+        },
+        {
+            "name": "Tailwind css",
+            "icon": "tailwind.svg",
+            "gridPos": "row-span-1 col-span-3",
+
+            "gradients": ["#1572b6", "#33a9dc"]
         },
         {
             "name": "Puppeteer",
             "icon": "puppeteer.svg",
+            "gridPos": "row-span-2 col-span-1",
             "gradients": ["#00d8a2", "#dfdedf"]
         },
         {
+            "name": "React.js",
+            "icon": "react.svg",
+            "gridPos": "row-span-1 col-span-2",
+            "gradients": ["#04d4fc", "#08dcfc"]
+        },
+
+        {
             "name": "Python",
             "icon": "python.svg",
+            "gridPos": "row-span-1 col-span-1",
             "gradients": ["#376f9e", "#ffd343"]
         }
     ]
