@@ -1,0 +1,48 @@
+.skill-item {
+    border: 1px solid #ececec;
+    border-radius: 24px;
+    color: #ececec;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+
+    $positions: 1 5 1, 2 3 1, 3 2 1, 4 2 1, 5 2 2, 6 1 3,
+        7 3 1, 8 1 3, 9 2 1, 10 1 2, 11 1 1;
+
+    @each $index, $row, $col in $positions {
+        &:nth-child(#{$index}) {
+            grid-row: span $row / span $row;
+            grid-column: span $col/ span $col;
+        }
+    }
+
+    .skill-name {
+        -webkit-text-stroke: 1px white;
+        color: transparent;
+        font-size: 60px;
+    }
+
+    .color-layer-1,
+    .color-layer-2,
+    .color-layer-white {
+        @apply absolute min-h-[300%] min-w-[300%] aspect-square rounded-full -translate-x-1/2 -translate-y-1/2;
+    }
+
+    .color-layer-white {
+        @apply top-1/2 left-1/2 flex items-center justify-center;
+        --clip: 0%;
+        clip-path: circle(50% at var(--clip) var(--clip));
+
+        .layer-white-content {
+            @apply relative;
+            border-radius: 24px;
+            .colored-icon-frame {
+                @apply absolute bottom-0 right-0 w-[180px] aspect-square overflow-hidden;
+            }
+        }
+    }
+
+    .icon-frame {
+        @apply absolute bottom-0 right-0 w-[180px] aspect-square overflow-hidden;
+    }
+}

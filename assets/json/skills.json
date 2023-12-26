@@ -1,78 +1,78 @@
 {
     "skills": [
         {
+            "key": "nuxt",
             "name": "Nuxt.js",
             "icon": "nuxt.svg",
-            "gridPos": "row-span-5 col-span-1",
             "gradients": ["#00dc82", "#80eec0"]
         },
         {
+            "key": "vue",
             "name": "Vue.js",
             "icon": "vue.svg",
-            "gridPos": "row-span-3 col-span-1",
-
             "gradients": ["#35495e", "#41b883"]
         },
 
         {
+            "key": "html",
             "name": "HTML",
             "icon": "html.svg",
-            "gridPos": "row-span-2 col-span-1",
-
             "gradients": ["#e44f26", "#f1662a"]
         },
 
         {
+            "key": "css",
             "name": "CSS",
             "icon": "css.svg",
-            "gridPos": "row-span-2 col-span-1",
             "gradients": ["#1572b6", "#33a9dc"]
         },
         {
+            "key": "js",
             "name": "Javascript",
             "icon": "js.svg",
-            "gridPos": "row-span-2 col-span-2",
-
-            "gradients": ["#f7df1e", "#050504"]
+            "gradients": ["#f7df1e", "#050504"],
+            "translate": [5, 5]
         },
         {
+            "key": "gsap",
             "name": "GSAP",
             "icon": "gsap.svg",
-            "gridPos": "row-span-1 col-span-3",
-
-            "gradients": ["#537727", "#8ac640"]
+            "gradients": ["#537727", "#8ac640"],
+            "translate": [10, 10]
         },
         {
+            "key": "sass",
             "name": "SASS",
             "icon": "sass.svg",
-            "gridPos": "row-span-3 col-span-1",
             "gradients": ["#1ab1ba", "#12cab7"]
         },
         {
+            "key": "tailwind",
             "name": "Tailwind css",
             "icon": "tailwind.svg",
-            "gridPos": "row-span-1 col-span-3",
-
-            "gradients": ["#1572b6", "#33a9dc"]
+            "gradients": ["#1572b6", "#33a9dc"],
+            "translate": [20, 10]
         },
         {
+            "key": "puppeteer",
             "name": "Puppeteer",
             "icon": "puppeteer.svg",
-            "gridPos": "row-span-2 col-span-1",
             "gradients": ["#00d8a2", "#dfdedf"]
         },
         {
+            "key": "react",
             "name": "React.js",
             "icon": "react.svg",
-            "gridPos": "row-span-1 col-span-2",
-            "gradients": ["#04d4fc", "#08dcfc"]
+            "gradients": ["#04d4fc", "#08dcfc"],
+            "translate": [15, 10]
         },
 
         {
+            "key": "python",
             "name": "Python",
             "icon": "python.svg",
-            "gridPos": "row-span-1 col-span-1",
-            "gradients": ["#376f9e", "#ffd343"]
+            "gradients": ["#376f9e", "#ffd343"],
+            "translate": [20, 10]
         }
     ]
 }
