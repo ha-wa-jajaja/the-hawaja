@@ -1,14 +1,12 @@
 <template>
-    <div
+    <a
+        :href="skillLink"
+        target="_blank"
         class="skill-item"
         ref="skillItem"
         @mouseenter="doTrans"
         @mouseleave="reverseTrans"
     >
-        <p class="skill-name roboto font-semibold hidden">
-            {{ skillName.toUpperCase() }}
-        </p>
-
         <div
             class="color-layer-1 z-0"
             ref="layer1"
@@ -31,6 +29,9 @@
                     height: `${height}px`,
                 }"
             >
+                <p class="skill-name tusker font-bold">
+                    {{ skillName.toUpperCase() }}
+                </p>
                 <div
                     class="colored-icon-frame"
                     :class="{
@@ -60,7 +61,7 @@
                 class="w-full h-auto"
             />
         </div>
-    </div>
+    </a>
 </template>
 <script setup>
 import gsap from "gsap";
@@ -77,6 +78,7 @@ const skillIcon = computed(() => props.skillObj?.icon);
 const skillGradients = computed(
     () => props.skillObj?.gradients
 );
+const skillLink = computed(() => props.skillObj?.link);
 
 const horizontalItems = [
     "gsap",
@@ -94,10 +96,10 @@ const skillItem = ref();
 const { width, height } = useElementBounding(skillItem);
 function setupGsap() {
     ctx = gsap.context((self) => {
-        const iconFrame = self.selector(".icon-frame");
-        const clrIconFrame = self.selector(
-            ".color-layer-white .layer-white-content .colored-icon-frame"
-        );
+        const iconFrames = [
+            self.selector(".icon-frame"),
+            self.selector(".colored-icon-frame"),
+        ];
         if (
             Object.prototype.hasOwnProperty.call(
                 props.skillObj,
@@ -105,22 +107,18 @@ function setupGsap() {
             )
         ) {
             let trans = props.skillObj.translate;
-            gsap.set(iconFrame, {
-                xPercent: trans[0],
-                yPercent: trans[1],
-            });
-            gsap.set(clrIconFrame, {
-                xPercent: trans[0],
-                yPercent: trans[1],
+            iconFrames.forEach((el) => {
+                gsap.set(el, {
+                    xPercent: trans[0],
+                    yPercent: trans[1],
+                });
             });
         } else {
-            gsap.set(iconFrame, {
-                xPercent: 20,
-                yPercent: 20,
-            });
-            gsap.set(clrIconFrame, {
-                xPercent: 20,
-                yPercent: 20,
+            iconFrames.forEach((el) => {
+                gsap.set(el, {
+                    xPercent: 20,
+                    yPercent: 20,
+                });
             });
         }
 
@@ -150,6 +148,10 @@ function setupGsap() {
                 },
                 0.3
             );
+
+        // .to(clrIconFrame, {
+        //     duration: 0.25,
+        // });
     }, skillItem.value);
 }
 

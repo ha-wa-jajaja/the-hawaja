@@ -4,67 +4,77 @@
             "key": "nuxt",
             "name": "Nuxt.js",
             "icon": "nuxt.svg",
-            "gradients": ["#00dc82", "#80eec0"]
+            "gradients": ["#00dc82", "#80eec0"],
+            "link": "https://nuxt.com/"
         },
         {
             "key": "vue",
             "name": "Vue.js",
             "icon": "vue.svg",
-            "gradients": ["#35495e", "#41b883"]
+            "gradients": ["#35495e", "#41b883"],
+            "link": "https://vuejs.org/"
         },
 
         {
             "key": "html",
             "name": "HTML",
             "icon": "html.svg",
-            "gradients": ["#e44f26", "#f1662a"]
+            "gradients": ["#e44f26", "#f1662a"],
+            "link": "https://html.spec.whatwg.org/"
         },
 
         {
             "key": "css",
             "name": "CSS",
             "icon": "css.svg",
-            "gradients": ["#1572b6", "#33a9dc"]
+            "gradients": ["#1572b6", "#33a9dc"],
+            "link": "https://www.w3.org/TR/CSS/#css"
         },
         {
             "key": "js",
             "name": "Javascript",
             "icon": "js.svg",
             "gradients": ["#f7df1e", "#050504"],
-            "translate": [5, 5]
+            "translate": [5, 5],
+            "link": "https://ecma-international.org/publications-and-standards/standards/ecma-262/"
         },
         {
             "key": "gsap",
             "name": "GSAP",
             "icon": "gsap.svg",
             "gradients": ["#537727", "#8ac640"],
-            "translate": [10, 10]
+            "translate": [10, 10],
+            "link": "https://gsap.com/"
         },
         {
             "key": "sass",
             "name": "SASS",
             "icon": "sass.svg",
-            "gradients": ["#1ab1ba", "#12cab7"]
+            "gradients": ["#1ab1ba", "#12cab7"],
+            "link": "https://sass-lang.com/"
         },
         {
             "key": "tailwind",
             "name": "Tailwind css",
             "icon": "tailwind.svg",
             "gradients": ["#1572b6", "#33a9dc"],
-            "translate": [20, 10]
+            "translate": [20, 10],
+            "link": "https://tailwindcss.com/"
         },
         {
             "key": "puppeteer",
             "name": "Puppeteer",
             "icon": "puppeteer.svg",
-            "gradients": ["#00d8a2", "#dfdedf"]
+            "gradients": ["#00d8a2", "#dfdedf"],
+            "link": "https://pptr.dev/"
         },
         {
             "key": "react",
             "name": "React.js",
             "icon": "react.svg",
             "gradients": ["#04d4fc", "#08dcfc"],
-            "translate": [15, 10]
+            "translate": [15, 10],
+            "link": "https://react.dev/"
         },
 
         {
@@ -72,7 +82,8 @@
             "name": "Python",
             "icon": "python.svg",
             "gradients": ["#376f9e", "#ffd343"],
-            "translate": [20, 10]
+            "translate": [20, 10],
+            "link": "https://www.python.org/"
         }
     ]
 }
