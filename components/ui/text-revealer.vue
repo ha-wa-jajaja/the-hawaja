@@ -4,8 +4,10 @@
         ref="wrapper"
     >
         <div class="content-wrap overflow-visible">
-            <div class="content w-fit h-fit">
-                <slot />
+            <div
+                class="content w-fit h-fit min-2lg:text-[120px] text-[100px] text-white tusker font-bold"
+            >
+                {{ props.content }}
             </div>
         </div>
         <div
@@ -15,6 +17,13 @@
 </template>
 <script setup>
 import gsap from "gsap";
+
+const props = defineProps({
+    content: {
+        type: String,
+        default: "",
+    },
+});
 
 const wrapper = ref();
 const { width } = useElementBounding(wrapper);
@@ -29,6 +38,7 @@ function setupAnim() {
         const contentWrap = self.selector(".content-wrap");
         const content = self.selector(".content");
         gsap.set(content, { scale: 0.8 });
+        gsap.set(stick, { scaleY: 0 });
         tl = gsap
             .timeline({
                 paused: true,
@@ -37,8 +47,9 @@ function setupAnim() {
                     duration: 0.8,
                 },
             })
-            .to(stick, { x: 4 - width.value }, 0)
-            .to(contentWrap, { "--clip": "0" }, 0)
+            .to(stick, { scaleY: 1, duration: 0.4 })
+            .to(stick, { x: 4 - width.value })
+            .to(contentWrap, { "--clip": "0" }, "<")
             .to(content, {
                 scale: 1,
                 duration: 0.2,

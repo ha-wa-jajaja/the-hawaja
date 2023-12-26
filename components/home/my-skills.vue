@@ -5,15 +5,13 @@
         @doOnEnter="titleAnim"
     >
         <main
-            class="container h-full flex flex-col items-center py-10 justify-between"
+            class="container h-full flex flex-col items-center py-12 justify-between"
         >
-            <UiTextRevealer ref="title">
-                <h1
-                    class="text-[120px] text-white tusker font-bold"
-                >
-                    {{ $t("skills") }}
-                </h1>
-            </UiTextRevealer>
+            <UiTextRevealer
+                ref="title"
+                class="mb-10"
+                :content="$t('skills')"
+            />
             <HomeSkillsSkillGird />
         </main>
     </UiStickyPinSection>

@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-full grid grid-cols-6 grid-rows-5 h-[78%] gap-4"
+        class="w-full grid grid-cols-6 grid-rows-5 grow gap-4"
     >
         <HomeSkillsSkillItem
             v-for="(skill, index) in skills"

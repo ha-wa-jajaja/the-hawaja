@@ -29,13 +29,10 @@
             </section>
             <section class="w-1/2 flex items-center">
                 <div class="w-full">
-                    <UiTextRevealer ref="title">
-                        <h1
-                            class="text-[120px] text-white tusker font-bold"
-                        >
-                            {{ $t("who") }}
-                        </h1>
-                    </UiTextRevealer>
+                    <UiTextRevealer
+                        ref="title"
+                        :content="$t('skills')"
+                    />
                     <div
                         class="mt-10 w-full overflow-hidden"
                     >
