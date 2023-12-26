@@ -5,6 +5,7 @@
             <HomeLanding />
             <HomeWhoAmI v-if="isLg" />
             <HomeWhoAmIM v-else />
+            <HomeMySkills />
             <div
                 class="w-screen h-screen bg-[#0c0821cc]"
             ></div>

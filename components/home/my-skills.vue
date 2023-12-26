@@ -1,15 +1,20 @@
 <template>
-    <UiStickyPinSection ref="pinWrapper" :height="200">
+    <UiStickyPinSection
+        ref="pinWrapper"
+        :height="200"
+        @doOnEnter="titleAnim"
+    >
         <main
-            class="container h-full flex flex-col items-center"
+            class="container h-full flex flex-col items-center py-10 justify-between"
         >
             <UiTextRevealer ref="title">
                 <h1
-                    class="text-[140px] text-white tusker font-bold"
+                    class="text-[120px] text-white tusker font-bold"
                 >
                     {{ $t("skills") }}
                 </h1>
             </UiTextRevealer>
+            <HomeSkillsSkillGird />
         </main>
     </UiStickyPinSection>
 </template>
@@ -21,5 +26,9 @@ const pinWrapper = ref(null);
 const scrollProgress = computed(
     () => pinWrapper.value?.progress
 );
+const title = ref();
+function titleAnim() {
+    title.value.playAnim();
+}
 </script>
 <style lang=""></style>

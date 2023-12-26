@@ -1,6 +1,6 @@
 <template>
     <div
-        class="relative px-4 py-6 w-fit h-fit"
+        class="relative px-4 py-4 w-fit h-fit"
         ref="wrapper"
     >
         <div class="content-wrap overflow-visible">

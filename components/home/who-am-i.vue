@@ -31,7 +31,7 @@
                 <div class="w-full">
                     <UiTextRevealer ref="title">
                         <h1
-                            class="text-[140px] text-white tusker font-bold"
+                            class="text-[120px] text-white tusker font-bold"
                         >
                             {{ $t("who") }}
                         </h1>
