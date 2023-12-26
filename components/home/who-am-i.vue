@@ -31,7 +31,7 @@
                 <div class="w-full">
                     <UiTextRevealer
                         ref="title"
-                        :content="$t('skills')"
+                        :content="$t('who')"
                     />
                     <div
                         class="mt-10 w-full overflow-hidden"

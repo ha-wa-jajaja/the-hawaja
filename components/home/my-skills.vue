@@ -9,24 +9,33 @@
         >
             <UiTextRevealer
                 ref="title"
-                class="mb-10"
+                class="mb-8"
                 :content="$t('skills')"
             />
-            <HomeSkillsSkillGird />
+            <HomeSkillsSkillGird ref="skillsGrid" />
         </main>
     </UiStickyPinSection>
 </template>
 <script setup>
-import { skills } from "@/assets/json/skills.json";
-import gsap from "gsap";
-
 const pinWrapper = ref(null);
 const scrollProgress = computed(
     () => pinWrapper.value?.progress
 );
+watch(scrollProgress, (progress) => {
+    useTriggerRellax(
+        ".skill-item .icon-frame img",
+        progress,
+        0.2,
+        0.2
+    );
+});
+
 const title = ref();
+const skillsGrid = ref();
 function titleAnim() {
-    title.value.playAnim();
+    title.value
+        .playAnim()
+        .then(() => skillsGrid.value.playAnim());
 }
 </script>
 <style lang=""></style>
