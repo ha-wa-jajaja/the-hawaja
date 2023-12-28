@@ -1,7 +1,7 @@
 <template>
     <div class="bg-slate-800 h-screen">
         <div class="container h-full flex items-center">
-            <HomeSkillsSkillGird />
+            <HomeSkillsSkillGridM />
         </div>
     </div>
 </template>

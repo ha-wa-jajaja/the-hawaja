@@ -1,0 +1,20 @@
+.skill-item-m {
+    border: 1px solid #ececec;
+    background: rgba(22, 22, 22, 0.8);
+    border-radius: 12px;
+    color: #ececec;
+    padding: 12px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+
+    $positions: 1 1 3, 2 1 2, 3 1 2, 4 1 3, 5 1 3, 6 1 2,
+        7 1 5, 8 1 2, 9 1 3, 10 1 3, 11 1 2;
+
+    @each $index, $row, $col in $positions {
+        &:nth-child(#{$index}) {
+            grid-row: span $row / span $row;
+            grid-column: span $col/ span $col;
+        }
+    }
+}
