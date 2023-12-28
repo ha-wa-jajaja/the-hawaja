@@ -23,28 +23,4 @@
     .color-layer-white {
         @apply absolute min-h-[300%] min-w-[300%] aspect-square rounded-full -translate-x-1/2 -translate-y-1/2;
     }
-
-    .color-layer-white {
-        @apply top-1/2 left-1/2 flex items-center justify-center;
-        --clip: 0%;
-        clip-path: circle(50% at var(--clip) var(--clip));
-
-        .layer-white-content {
-            @apply relative p-5;
-            border-radius: 24px;
-            .skill-name {
-                @apply relative z-[2];
-                -webkit-text-stroke: 1.5px black;
-                color: #ececec;
-                font-size: 84px;
-            }
-            .colored-icon-frame {
-                @apply absolute bottom-0 right-0 w-[180px] aspect-square overflow-hidden;
-            }
-        }
-    }
-
-    .icon-frame {
-        @apply absolute bottom-0 right-0 w-[180px] aspect-square overflow-hidden;
-    }
 }

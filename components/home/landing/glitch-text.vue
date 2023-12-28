@@ -61,7 +61,7 @@ const props = defineProps({
 @keyframes noise-anim {
     $steps: 20;
     @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
+        #{percentage($i*calc(1/$steps))} {
             clip: rect(
                 random(100) + px,
                 9999px,
@@ -87,7 +87,7 @@ const props = defineProps({
 @keyframes noise-anim-2 {
     $steps: 20;
     @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
+        #{percentage($i*calc(1/$steps))} {
             clip: rect(
                 random(150) + px,
                 9999px,
