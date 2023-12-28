@@ -7,6 +7,8 @@
             v-for="(skill, index) in skills"
             :key="`skill-${index}-m`"
             :skill-obj="skill"
+            :is-active="skill.key === activeSkill"
+            @set-active="setActiveSkill"
         />
     </div>
 </template>

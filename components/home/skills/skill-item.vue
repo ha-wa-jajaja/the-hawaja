@@ -148,15 +148,10 @@ function setupGsap() {
                 },
                 0.3
             );
-
-        // .to(clrIconFrame, {
-        //     duration: 0.25,
-        // });
     }, skillItem.value);
 }
 
 const layer1 = ref();
-const layer2 = ref();
 function doTrans(e) {
     let x = e.clientX - e.target.offsetLeft;
     let y = e.clientY - e.target.offsetTop;

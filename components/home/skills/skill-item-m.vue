@@ -1,5 +1,9 @@
 <template>
-    <div class="skill-item-m" ref="skillItemM">
+    <div
+        class="skill-item-m"
+        ref="skillItemM"
+        @click="doTrans"
+    >
         <div
             class="color-layer-1 z-0"
             ref="layer1"
@@ -9,7 +13,6 @@
         ></div>
         <div
             class="color-layer-2 z-[1]"
-            ref="layer2"
             :style="{
                 'background-color': skillGradients[1],
             }"
@@ -44,10 +47,16 @@
     </div>
 </template>
 <script setup>
+import gsap from "gsap";
+
 const props = defineProps({
     skillObj: {
         type: Object,
         default: () => {},
+    },
+    isActive: {
+        type: Boolean,
+        default: false,
     },
 });
 const skillName = computed(() => props.skillObj?.name);
@@ -59,6 +68,59 @@ const skillGradients = computed(
 
 const skillItemM = ref();
 const { width, height } = useElementBounding(skillItemM);
+let ctx;
+let tl;
+function setupAnim() {
+    ctx = gsap.context((self) => {
+        const layer1 = self.selector(".color-layer-1");
+        const layer2 = self.selector(".color-layer-2");
+        const layer3 = self.selector(".color-layer-white");
+        gsap.set(layer1, { opacity: 0, scale: 0.3 });
+        gsap.set(layer2, { opacity: 0, scale: 0.3 });
+        gsap.set(layer3, { opacity: 0 });
+
+        tl = gsap
+            .timeline({
+                paused: true,
+                defaults: {
+                    ease: "power1.in",
+                    duration: 0.5,
+                },
+            })
+            .to(layer1, { opacity: 1, scale: 1 })
+            .to(layer2, { opacity: 1, scale: 1 }, 0.2)
+            .to(
+                layer3,
+                {
+                    opacity: 1,
+                    "--clip": "50%",
+                    duration: 0.6,
+                },
+                0.3
+            );
+    }, skillItemM.value);
+}
+
+const layer1 = ref();
+function doTrans(e) {
+    emits("setActive", skillKey.value);
+    let x = e.clientX - e.target.offsetLeft;
+    let y = e.clientY - e.target.offsetTop;
+    gsap.set(layer1.value, { top: x, left: y });
+    tl.play();
+}
+watch(
+    () => props.isActive,
+    (val) => {
+        if (!val) tl.reverse();
+    }
+);
+
+const emits = defineEmits(["setActive"]);
+
+onMounted(() => {
+    setupAnim();
+});
 </script>
 <style lang="scss" scoped>
 @import url("@/assets/scss/components/skill-item-m.scss");
