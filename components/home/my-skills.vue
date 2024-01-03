@@ -7,11 +7,20 @@
         <main
             class="container h-full flex flex-col items-center py-12 justify-between"
         >
-            <UiTextRevealer
-                ref="title"
-                class="mb-8"
-                :content="$t('skills')"
-            />
+            <div
+                class="relative w-full flex justify-center"
+            >
+                <UiTextRevealer
+                    ref="title"
+                    class="mb-8"
+                    :content="$t('skills')"
+                />
+                <div
+                    class="roboto text-white absolute right-0 bottom-0 mb-8 hover-hint"
+                >
+                    {{ $t("hover_hint") }}
+                </div>
+            </div>
             <HomeSkillsSkillGird ref="skillsGrid" />
         </main>
     </UiStickyPinSection>
