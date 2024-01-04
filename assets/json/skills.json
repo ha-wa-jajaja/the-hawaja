@@ -50,7 +50,7 @@
             "key": "sass",
             "name": "SASS",
             "icon": "sass.svg",
-            "gradients": ["#1ab1ba", "#12cab7"],
+            "gradients": ["#cc6699", "#FFFFFF"],
             "link": "https://sass-lang.com/"
         },
         {

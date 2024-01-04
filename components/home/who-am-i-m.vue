@@ -14,14 +14,14 @@
             class="cross-stroke absolute top-0 left-0 pointer-events-none -z-10"
         />
 
-        <main class="container h-fit">
+        <main class="container h-fit flex flex-col">
             <UiTextRevealer
                 ref="title"
                 :content="$t('who')"
             />
 
             <section
-                class="profile-pic w-full aspect-square max-w-[500px] mt-14"
+                class="profile-pic w-full aspect-square max-w-[500px] mt-14 self-center"
             >
                 <div
                     class="circle w-full h-full bg-purple-primary rounded-full bg-opacity-80 relative overflow-hidden"

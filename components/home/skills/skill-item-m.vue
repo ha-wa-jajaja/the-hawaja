@@ -3,6 +3,7 @@
         class="skill-item-m"
         ref="skillItemM"
         @click="doTrans"
+        v-fade:up
     >
         <div
             class="color-layer-1 z-0"

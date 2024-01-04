@@ -16,7 +16,7 @@
                     :content="$t('skills')"
                 />
                 <div
-                    class="roboto text-white absolute right-0 bottom-0 mb-8 hover-hint"
+                    class="roboto text-white absolute right-0 bottom-0 mb-4 hover-hint"
                 >
                     {{ $t("hover_hint") }}
                 </div>

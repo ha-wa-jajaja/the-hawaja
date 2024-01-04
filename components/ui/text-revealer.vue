@@ -5,7 +5,7 @@
     >
         <div class="content-wrap overflow-visible">
             <div
-                class="content w-fit h-fit min-2lg:text-[120px] text-[100px] text-white tusker font-bold"
+                class="content w-fit h-fit min-2lg:text-[100px] text-[64px] text-white tusker font-bold"
             >
                 {{ props.content }}
             </div>
