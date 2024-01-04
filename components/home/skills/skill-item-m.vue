@@ -26,9 +26,6 @@
                     height: `${height}px`,
                 }"
             >
-                <p class="skill-name tusker font-bold">
-                    {{ skillName.toUpperCase() }}
-                </p>
                 <div class="colored-icon-frame">
                     <img
                         :src="`/icons/${skillIcon}`"

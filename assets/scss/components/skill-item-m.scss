@@ -55,12 +55,7 @@
         .layer-white-content {
             @apply relative p-2;
             border-radius: 24px;
-            .skill-name {
-                @apply relative z-[2];
-                -webkit-text-stroke: 1px black;
-                color: #ececec;
-                font-size: 52px;
-            }
+
             .colored-icon-frame {
                 @apply absolute bottom-0 right-0 overflow-hidden h-full;
                 img {
