@@ -5,13 +5,14 @@
     >
         <UiExpandCircle
             ref="circle"
-            class="absolute bottom-0 right-0 pointer-events-none -z-10 -translate-x-1/2 scale-[65%]"
+            class="absolute bottom-0 right-0 pointer-events-none -z-10 translate-x-1/2"
             :circle-id="'whoAmI-m-bg'"
+            :width="300"
         />
         <img
             src="/cross-stroke.svg"
             alt=""
-            class="cross-stroke absolute top-0 left-0 pointer-events-none -z-10"
+            class="cross-stroke absolute top-0 left-0 pointer-events-none -z-10 w-[200px] h-auto translate-y-1/2"
         />
 
         <main class="container h-fit flex flex-col">
@@ -78,7 +79,6 @@ function setupAnim() {
         gsap.set(cross, {
             scale: 0,
             xPercent: 20,
-            transformOrigin: "right",
         });
 
         tl = gsap
@@ -104,8 +104,7 @@ function setupAnim() {
             .to(
                 cross,
                 {
-                    scale: 0.5,
-                    transformOrigin: "right",
+                    scale: 1,
                     duration: 0.3,
                 },
                 "<"

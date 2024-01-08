@@ -47,13 +47,15 @@
 
             <UiExpandCircle
                 ref="circle"
-                class="absolute top-0 right-0 scale-[2] pointer-events-none -translate-y-[40%] -z-10"
+                class="absolute top-0 right-0 pointer-events-none -translate-y-[40%] -z-10"
                 :circle-id="'whoAmI-bg-1'"
+                :width="800"
             />
             <UiExpandCircle
                 ref="circle2"
-                class="absolute bottom-0 left-0 scale-[1.8] pointer-events-none translate-y-[40%] -z-10 -translate-x-full"
+                class="absolute bottom-0 left-0 pointer-events-none translate-y-[40%] -z-10 -translate-x-3/4"
                 :circle-id="'whoAmI-bg-2'"
+                :width="600"
             />
             <img
                 src="/cross-fill.svg"
@@ -76,7 +78,12 @@ const scrollProgress = computed(
 );
 watch(scrollProgress, (progress) => {
     useUpdateCityPos("whoAmI", progress);
-    useTriggerRellax(circleClass.value, progress, 0.2, 0.6);
+    useTriggerRellax(
+        circleClass.value,
+        progress,
+        0.2,
+        0.05
+    );
     useTriggerRellax(
         circle2Class.value,
         progress,

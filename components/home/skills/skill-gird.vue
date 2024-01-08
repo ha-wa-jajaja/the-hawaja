@@ -38,7 +38,7 @@ function setupAnim() {
                 stagger: {
                     grid: "auto",
                     from: "random",
-                    amount: 1,
+                    amount: 0.5,
                 },
             })
             .from(iconFrame, {

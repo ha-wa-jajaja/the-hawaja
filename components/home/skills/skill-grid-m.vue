@@ -23,6 +23,9 @@ function setActiveSkill(str) {
 </script>
 <style lang="scss" scoped>
 .skill-grid {
-    aspect-ratio: 9/16;
+    aspect-ratio: 9/14;
+    @screen min-ms {
+        aspect-ratio: 1/1;
+    }
 }
 </style>

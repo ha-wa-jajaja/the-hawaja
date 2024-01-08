@@ -11,14 +11,14 @@
             "link": "https://iaq.airside.com.hk/"
         },
         {
-            "name": "Welend",
-            "key": "welend",
-            "link": "https://www.welend.hk/en"
-        },
-        {
             "name": "Yidan Prize",
             "key": "yidan",
             "link": "https://yidanprize.org/"
+        },
+        {
+            "name": "Welend",
+            "key": "welend",
+            "link": "https://www.welend.hk/en"
         },
         {
             "name": "Wynn Macau",
