@@ -44,6 +44,21 @@
             "name": "House Of Beauty",
             "key": "hob",
             "link": "https://houseofbeauty.com.hk/en"
+        },
+        {
+            "name": "New Yaohan",
+            "key": "nyh",
+            "link": null
+        },
+        {
+            "name": "NF Touch",
+            "key": "NFT",
+            "link": "https://www.nftouch.com.hk/en/"
+        },
+        {
+            "name": "LP Lucky Draw",
+            "key": "lp",
+            "link": null
         }
     ]
 }
