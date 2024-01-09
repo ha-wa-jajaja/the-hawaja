@@ -140,13 +140,13 @@ function createSt() {
                 ".who-am-i-m .cross-stroke",
                 self.progress,
                 0.2,
-                0.1
+                0.5
             );
             useTriggerRellax(
                 circleClass.value,
                 self.progress,
-                0.9,
-                -0.1
+                0.4,
+                -0.4
             );
         },
     });

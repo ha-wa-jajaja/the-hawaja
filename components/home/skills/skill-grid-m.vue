@@ -17,6 +17,7 @@ import { skills } from "@/assets/json/skills.json";
 import gsap from "gsap";
 
 const activeSkill = ref("");
+defineExpose({ activeSkill });
 function setActiveSkill(str) {
     activeSkill.value = str;
 }
