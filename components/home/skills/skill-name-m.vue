@@ -1,7 +1,7 @@
 <template>
     <div
         class="flex w-full roboto justify-center skill-name-anim"
-        :class="{ active: props.activeSkill }"
+        :class="{ active: active }"
         ref="skill_name_anim"
     >
         <div class="overflow-hidden relative w-fit">
@@ -45,11 +45,11 @@ function setupAnim() {
             })
             .to(left, { xPercent: 60 }, 0)
             .to(right, { xPercent: -60 }, 0)
-            .call(
-                () =>
-                    (displayText.value =
-                        props.activeSkill.toUpperCase())
-            )
+            .call(() => {
+                displayText.value =
+                    props.activeSkill.toUpperCase();
+                active.value = true;
+            })
             .to(left, { xPercent: 0 }, 0.4)
             .to(right, { xPercent: 0 }, 0.4);
     }, skill_name_anim.value);
@@ -57,6 +57,7 @@ function setupAnim() {
 
 const { t } = useI18n();
 const displayText = ref(t("click_hint"));
+const active = ref(false);
 watch(
     () => props.activeSkill,
     (val) => {

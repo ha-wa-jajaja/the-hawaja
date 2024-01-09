@@ -19,7 +19,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const my_skill_m_wrap = ref();
-const progress = ref(0);
 let st;
 function setupSt() {
     st = ScrollTrigger.create({
@@ -28,7 +27,18 @@ function setupSt() {
         end: "bottom top",
         scrub: 2,
         onUpdate: (self) => {
-            progress.value = self.progress.toFixed(8);
+            useTriggerRellax(
+                ".skill-item-m .icon-frame img",
+                self.progress,
+                0.4,
+                0.4
+            );
+            useTriggerRellax(
+                ".skill-item-m .colored-icon-frame img",
+                self.progress,
+                0.4,
+                0.4
+            );
         },
         onEnter: () => animTitle(),
     });
