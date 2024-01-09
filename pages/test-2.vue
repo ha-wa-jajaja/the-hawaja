@@ -1,8 +1,7 @@
 <template>
-    <div class="bg-slate-800 h-screen">
-        <div class="container h-full flex items-center">
-            <HomeSkillsSkillGridM />
-        </div>
+    <div class="bg-slate-800">
+        <div class="w-screen h-screen"></div>
+        <HomeMyProjects />
     </div>
 </template>
 <script setup></script>

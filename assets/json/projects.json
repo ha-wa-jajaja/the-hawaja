@@ -16,14 +16,14 @@
             "link": "https://yidanprize.org/"
         },
         {
-            "name": "Welend",
-            "key": "welend",
-            "link": "https://www.welend.hk/en"
-        },
-        {
             "name": "Wynn Macau",
             "key": "wynn",
             "link": "https://www.wynnresortsmacau.com/en/wynn-macau"
+        },
+        {
+            "name": "Welend",
+            "key": "welend",
+            "link": "https://www.welend.hk/en"
         },
         {
             "name": "PolyU Soinno",

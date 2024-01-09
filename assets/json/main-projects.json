@@ -1,0 +1,24 @@
+{
+    "projects": [
+        {
+            "name": "Airside",
+            "key": "airside",
+            "link": "https://www.airside.com.hk/en"
+        },
+        {
+            "name": "Airside iaq",
+            "key": "airsideIaq",
+            "link": "https://iaq.airside.com.hk/"
+        },
+        {
+            "name": "Yidan Prize",
+            "key": "yidan",
+            "link": "https://yidanprize.org/"
+        },
+        {
+            "name": "Wynn Macau",
+            "key": "wynn",
+            "link": "https://www.wynnresortsmacau.com/en/wynn-macau"
+        }
+    ]
+}
