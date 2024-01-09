@@ -1,5 +1,7 @@
 <template>
-    <div
+    <a
+        :href="props.projectData?.link"
+        target="_blank"
         class="project-block"
         :class="{
             'self-end': !props.left,
@@ -7,18 +9,32 @@
         }"
         ref="proj_block"
     >
-        <img
-            :src="`/project/${props.projectData?.key}.png`"
-            alt=""
-            class="h-[30vh]"
-        />
+        <div
+            class="relative proj-img overflow-hidden"
+            @mousemove="toggleCursor"
+            @mouseenter="showMoreBtn = true"
+            @mouseleave="showMoreBtn = false"
+        >
+            <div
+                class="proj-cursor"
+                v-show="showMoreBtn"
+                ref="moreBtn"
+            >
+                <p class="tusker text-[64px]">MORE</p>
+            </div>
+            <img
+                :src="`/project/${props.projectData?.key}.png`"
+                alt=""
+                class="h-[30vh] mix-blend-difference"
+            />
+        </div>
         <div class="proj-name roboto w-fit">
             <div class="overlay"></div>
             <p>
                 {{ props.projectData.name.toUpperCase() }}
             </p>
         </div>
-    </div>
+    </a>
 </template>
 <script setup>
 import gsap from "gsap";
@@ -38,7 +54,7 @@ let tl;
 let ctx;
 function setupAnim() {
     ctx = gsap.context((self) => {
-        const img = self.selector("img");
+        const img = self.selector(".proj-img");
         const nameWrap = self.selector(".proj-name");
         const overlay = self.selector(".overlay");
 
@@ -77,6 +93,15 @@ function setupAnim() {
             );
     }, proj_block.value);
 }
+
+const showMoreBtn = ref(false);
+const moreBtn = ref(null);
+function toggleCursor(event) {
+    moreBtn.value.style.transform = `translate(${
+        event.offsetX - 50
+    }px, ${event.offsetY - 50}px)`;
+}
+
 onMounted(() => {
     setupAnim();
     useObserver(proj_block, () => tl.play(), true);
@@ -84,7 +109,18 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 .project-block {
-    @apply relative z-10;
+    @apply relative z-10 block;
+
+    .proj-img {
+        @apply hover:cursor-none;
+        img {
+            @apply hover:grayscale;
+            transition: all 0.5s ease;
+        }
+        .proj-cursor {
+            @apply w-[100px] h-[100px] bg-blue-600 absolute top-0 left-0 rounded-full flex items-center justify-center;
+        }
+    }
     .proj-name {
         @apply bg-black text-white font-bold text-[64px] p-4 -translate-y-6 -translate-x-4;
         --clip: 100%;
