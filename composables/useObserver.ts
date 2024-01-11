@@ -7,7 +7,7 @@ export const useObserver = (
 ) => {
     const target = el.value;
     const options = {
-        threshold: [0.25],
+        threshold: [0.4],
     };
     let executed = false;
     let callback = (entries: any) => {

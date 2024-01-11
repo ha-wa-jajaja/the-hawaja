@@ -6,8 +6,8 @@ export default {
     lazy: true,
     locales: [
         {
-            code: "zh-hk",
-            iso: "zh-HK",
+            code: "tw",
+            iso: "zh-TW",
             name: "繁",
             file: "tc.json",
         },

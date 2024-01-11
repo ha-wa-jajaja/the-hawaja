@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-full grid grid-cols-6 grid-rows-5 grow gap-4 h-[calc(100%-184px)] relative"
+        class="w-full grid grid-cols-6 grid-rows-5 grow gap-4 relative"
         ref="skillGrid"
     >
         <HomeSkillsSkillItem

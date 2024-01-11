@@ -26,11 +26,25 @@ const movedInView = computed(
 );
 const realSpeed = computed(() => (0 - props.speed) / 10);
 const rellaxEl = ref();
+const emits = defineEmits(["doWithProgress", "doOnEnter"]);
+
+function clampProgress(val) {
+    if (val < 0) return 0;
+    else if (val > 1) return 1;
+    else return val;
+}
+const didOnEnter = ref(false);
 watch(movedInView, (val) => {
-    if (!startRellax.value) return;
+    const progress = movedInView.value / height.value;
+    if (progress < -0.1) return;
+    if (!didOnEnter.value) {
+        emits("doOnEnter");
+        didOnEnter.value = true;
+    }
     gsap.set(rellaxEl.value, {
         y: `${realSpeed.value * movedInView.value}px`,
     });
+    emits("doWithProgress", clampProgress(progress));
 });
 </script>
 <style lang=""></style>
