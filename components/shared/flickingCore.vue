@@ -67,9 +67,9 @@ const {
 
 const emit = defineEmits(["sendIndex"]);
 
-// watch(slideIdx, () => {
-//     emit("sendIndex", slideIdx.value);
-// });
+watch(slideIdx, () => {
+    emit("sendIndex", slideIdx.value);
+});
 // watch(movingDir,()=>{
 
 // })

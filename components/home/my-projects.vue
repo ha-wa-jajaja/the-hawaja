@@ -5,6 +5,7 @@
             ref="titleGroup"
         >
             <UiTextRevealer
+                class="translate-y-1/2"
                 ref="title"
                 :content="$t('projects')"
             />

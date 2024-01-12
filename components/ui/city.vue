@@ -44,6 +44,9 @@ const camera = new PerspectiveCamera(
 
 camera.position.set(7.54, 0.73, -6.12);
 // camera.position.set(-4.126, 1.457, 7.461);
+// -4.239094276380204
+// 0.7604524758677725
+// 1.8156096648408697
 
 scene.add(camera);
 const ambientLight = new AmbientLight(0xffffff, 0.5);
@@ -90,6 +93,8 @@ function setRenderer() {
         camera,
         renderer.domElement
     );
+    controls.autoRotateSpeed = 0.05;
+    controls.autoRotate = true;
     updateRenderer();
 }
 
@@ -100,6 +105,7 @@ onMounted(() => {
 
 const loop = () => {
     controls.update();
+    // controls.autoRotate();
     renderer.render(scene, camera);
     requestAnimationFrame(loop);
 };
