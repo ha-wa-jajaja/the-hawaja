@@ -5,5 +5,9 @@
     "skills": "專業技能",
     "hover_hint": "將滑鼠移動到方塊上以查看更多",
     "click_hint": "點擊以查看更多",
-    "projects": "參與專案"
+    "projects": "參與專案",
+    "more": "查看更多",
+    "hint_1": "捲動",
+    "hint_2": "查看更多",
+    "contact": "與我聯絡"
 }

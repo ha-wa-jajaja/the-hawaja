@@ -20,7 +20,12 @@
                 v-show="showMoreBtn"
                 ref="moreBtn"
             >
-                <p class="tusker text-[64px]">MORE</p>
+                <p
+                    class="tusker text-[64px]"
+                    :class="{ '!text-[16px]': !isEn }"
+                >
+                    {{ $t("more") }}
+                </p>
             </div>
             <img
                 :src="`/project/${props.projectData?.key}.png`"
@@ -101,6 +106,9 @@ function toggleCursor(event) {
         event.offsetX - 50
     }px, ${event.offsetY - 50}px)`;
 }
+
+const { t, locale } = useI18n();
+const isEn = computed(() => locale.value === "en");
 
 onMounted(() => {
     setupAnim();

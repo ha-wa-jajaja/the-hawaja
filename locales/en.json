@@ -5,5 +5,9 @@
     "skills": "MY SKILLS",
     "hover_hint": "Hover to see more",
     "click_hint": "Click to see more",
-    "projects": "PARTICIPATED PROJECTS"
+    "projects": "PROJECTS",
+    "more": "MORE",
+    "hint_1": "SCROLL FOR",
+    "hint_2": "MORE",
+    "contact": "CONTACT"
 }

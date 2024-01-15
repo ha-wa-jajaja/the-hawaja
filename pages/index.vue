@@ -8,9 +8,7 @@
             <HomeMySkills v-if="isLg" />
             <HomeMySkillsM v-else />
             <HomeMyProjects />
-            <div
-                class="w-screen h-screen bg-[#0c0821cc]"
-            ></div>
+            <HomeContact />
         </div>
     </div>
 </template>

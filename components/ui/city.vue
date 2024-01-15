@@ -44,9 +44,6 @@ const camera = new PerspectiveCamera(
 
 camera.position.set(7.54, 0.73, -6.12);
 // camera.position.set(-4.126, 1.457, 7.461);
-// -4.239094276380204
-// 0.7604524758677725
-// 1.8156096648408697
 
 scene.add(camera);
 const ambientLight = new AmbientLight(0xffffff, 0.5);

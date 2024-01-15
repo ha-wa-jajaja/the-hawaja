@@ -215,7 +215,7 @@ function enterAnim() {
 function leaveAnim() {
     circle.value?.reverseAnim();
     circle2.value?.reverseAnim();
-    leaveTl.play();
+    leaveTl.play(0);
 }
 
 onMounted(() => {

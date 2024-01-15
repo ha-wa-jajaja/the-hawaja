@@ -1,16 +1,7 @@
 <template>
     <section class="my-projects" ref="my_projects">
-        <div
-            class="w-full h-[50vh] container flex items-center"
-            ref="titleGroup"
-        >
-            <UiTextRevealer
-                class="translate-y-1/2"
-                ref="title"
-                :content="$t('projects')"
-            />
-        </div>
-        <main class="w-screen container">
+        <HomeProjectsTrans />
+        <main class="w-screen container overflow-hidden">
             <div
                 class="w-full h-screen mb-16 flex flex-col justify-evenly relative"
             >
@@ -42,13 +33,18 @@
                         :circle-id="'proj-bg'"
                     />
                 </UiRellaxEl>
-                <img
-                    src="/cross-stroke.svg"
-                    alt=""
-                    class="absolute top-0 left-0 w-[400px] scale-0 transition-transform duration-200 -translate-x-1/4"
-                    :class="{ 'scale-100': showCross }"
-                    ref="cross"
-                />
+                <UiRellaxEl
+                    class="absolute top-0 left-0 -translate-x-1/4"
+                    :speed="-1"
+                >
+                    <img
+                        src="/cross-stroke.svg"
+                        alt=""
+                        class="w-[400px] scale-0 transition-transform duration-200"
+                        :class="{ 'scale-100': showCross }"
+                        ref="cross"
+                    />
+                </UiRellaxEl>
                 <HomeProjectsProjectBlock
                     :project-data="projects[0]"
                 />
@@ -94,18 +90,15 @@ function playCircle() {
     circle.value?.playAnim();
 }
 
-const titleGroup = ref();
-const title = ref();
 const cross = ref();
 const showCross = ref(false);
 onMounted(() => {
     useObserver(cross, () => (showCross.value = true));
-    useObserver(titleGroup, () => title.value.playAnim());
 });
 </script>
 <style lang="scss" scoped>
 .my-projects {
-    @apply relative overflow-hidden;
+    @apply relative;
     .bg-text {
         @apply absolute bottom-0 left-0;
 
