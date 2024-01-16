@@ -3,7 +3,7 @@
         <HomeProjectsTrans />
         <main class="w-screen container overflow-hidden">
             <div
-                class="w-full h-screen mb-16 flex flex-col justify-evenly relative"
+                class="w-full h-screen mb-16 flex flex-col justify-evenly relative max-2lg:justify-between"
             >
                 <UiRellaxEl
                     class="bg-text tusker"
@@ -28,7 +28,7 @@
                     @do-on-enter="playCircle"
                 >
                     <UiExpandCircle
-                        :width="500"
+                        :width="circleSize"
                         ref="circle"
                         :circle-id="'proj-bg'"
                     />
@@ -40,7 +40,7 @@
                     <img
                         src="/cross-stroke.svg"
                         alt=""
-                        class="w-[400px] scale-0 transition-transform duration-200"
+                        class="w-[400px] scale-0 transition-transform duration-200 max-lg:w-[250px]"
                         :class="{ 'scale-100': showCross }"
                         ref="cross"
                     />
@@ -54,7 +54,7 @@
                 />
             </div>
             <div
-                class="w-full h-screen flex flex-col justify-evenly relative"
+                class="w-full h-screen flex flex-col justify-evenly relative max-lg:justify-between"
             >
                 <HomeProjectsProjectBlock
                     :project-data="projects[2]"
@@ -70,9 +70,9 @@
             :speed="2"
         >
             <img
-                src="/cross-stroke.svg"
+                src="/cross-fill.svg"
                 alt=""
-                class="w-[500px]"
+                class="w-[500px] max-lg:w-[250px]"
             />
         </UiRellaxEl>
     </section>
@@ -84,6 +84,9 @@ const fillProgress = ref(100);
 function fillText(progress) {
     fillProgress.value = 100 - 100 * progress;
 }
+
+const { min } = useMedia();
+const circleSize = computed(() => (min("lg") ? 500 : 300));
 
 const circle = ref();
 function playCircle() {
@@ -106,6 +109,10 @@ onMounted(() => {
         font-weight: 600;
         opacity: 0.5;
         line-height: 110%;
+
+        @screen max-lg {
+            font-size: 40vw;
+        }
 
         .stroke {
             color: transparent;

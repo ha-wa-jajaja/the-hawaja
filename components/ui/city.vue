@@ -90,8 +90,8 @@ function setRenderer() {
         camera,
         renderer.domElement
     );
-    controls.autoRotateSpeed = 0.05;
-    controls.autoRotate = true;
+    // controls.autoRotateSpeed = 0.05;
+    // controls.autoRotate = true;
     updateRenderer();
 }
 
@@ -102,7 +102,6 @@ onMounted(() => {
 
 const loop = () => {
     controls.update();
-    // controls.autoRotate();
     renderer.render(scene, camera);
     requestAnimationFrame(loop);
 };

@@ -1,6 +1,6 @@
 <template>
     <UiStickyPinSection
-        :height="300"
+        :height="transH"
         ref="pinWrapper"
         :st-end="'bottom bottom'"
     >
@@ -39,6 +39,9 @@ const { t, locale } = useI18n();
 const isEn = computed(() => locale.value === "en");
 const titleText = computed(() => t("projects")?.split(""));
 
+const { min } = useMedia();
+const transH = computed(() => (min("lg") ? 300 : 150));
+
 let ctx;
 let tl;
 const projTrans = ref();
@@ -74,6 +77,9 @@ onMounted(() => {
 .main-text {
     &.en {
         font-size: 25vw;
+        @screen max-lg {
+            font-size: 38vw;
+        }
     }
     &:not(.en) {
         font-size: 15vw;

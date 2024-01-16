@@ -28,9 +28,11 @@
                 </p>
             </div>
             <img
-                :src="`/project/${props.projectData?.key}.png`"
+                :src="`/${
+                    min('lg') ? 'project' : 'project-m'
+                }/${props.projectData?.key}.png`"
                 alt=""
-                class="h-[30vh] mix-blend-difference"
+                class="h-[30vh] mix-blend-difference max-lg:h-[40vh]"
             />
         </div>
         <div class="proj-name roboto w-fit">
@@ -110,6 +112,8 @@ function toggleCursor(event) {
 const { t, locale } = useI18n();
 const isEn = computed(() => locale.value === "en");
 
+const { min } = useMedia();
+
 onMounted(() => {
     setupAnim();
     useObserver(proj_block, () => tl.play(), true);
@@ -130,7 +134,7 @@ onMounted(() => {
         }
     }
     .proj-name {
-        @apply bg-black text-white font-bold text-[64px] p-4 -translate-y-6 -translate-x-4;
+        @apply bg-black text-white font-bold text-[64px] p-4 -translate-y-6 -translate-x-4 max-lg:-translate-y-3 max-lg:-translate-x-2 max-lg:text-[32px] max-2lg:p-2;
         --clip: 100%;
         -webkit-clip-path: inset(0 var(--clip) 0 0);
         clip-path: inset(0 var(--clip) 0 0);
