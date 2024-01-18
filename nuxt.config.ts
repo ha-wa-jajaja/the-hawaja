@@ -38,6 +38,7 @@ export default defineNuxtConfig({
         "nuxt-lenis",
         "@tresjs/nuxt",
         "@nuxtjs/google-fonts",
+        "nuxt-svgo",
     ],
     // doc: https://nuxt.com/docs/api/configuration/nuxt-config#postcss
     devServer: {
