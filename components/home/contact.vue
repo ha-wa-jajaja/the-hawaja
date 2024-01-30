@@ -43,8 +43,9 @@ function setupAnim() {
         paths.forEach((path) => {
             let l = path.getTotalLength();
             gsap.set(path, {
-                strokeDasharray: l + 5,
-                strokeDashoffset: l + 5,
+                opacity: 0,
+                strokeDasharray: l + 10,
+                strokeDashoffset: l + 10,
             });
         });
 
@@ -55,6 +56,7 @@ function setupAnim() {
             })
             .to(paths, {
                 strokeDashoffset: 0,
+                opacity: 1,
                 duration: 5,
             });
     }, contact.value);
@@ -72,6 +74,10 @@ onMounted(() => {
 .contact {
     @apply flex items-center justify-center;
     a {
+        transition: transform 0.2s ease-in-out;
+        &:hover {
+            transform: translateY(-10%);
+        }
         &:nth-child(1) {
             @apply mr-10;
             svg {

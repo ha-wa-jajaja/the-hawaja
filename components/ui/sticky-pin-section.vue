@@ -1,7 +1,7 @@
 <template>
     <section
         class="w-screen relative"
-        :style="{ height: `${height}dvh` }"
+        :style="{ height: `${height}vh` }"
         ref="stickyPinEl"
     >
         <div

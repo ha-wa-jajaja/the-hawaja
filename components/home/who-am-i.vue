@@ -191,8 +191,10 @@ function setupAnim() {
                 { scale: 0.5, duration: 0.4 },
                 "<"
             )
-
-            .call(() => (playedAnim.value = true));
+            .call(() => {
+                playedAnim.value = true;
+                if (leaveAnimWaiting.value) leaveAnim();
+            });
 
         leaveTl = gsap
             .timeline({
@@ -212,10 +214,14 @@ function enterAnim() {
         leaveTl.reverse();
     }
 }
+const leaveAnimWaiting = ref(false);
 function leaveAnim() {
+    if (!playedAnim.value)
+        return (leaveAnimWaiting.value = true);
+
     circle.value?.reverseAnim();
     circle2.value?.reverseAnim();
-    leaveTl.play(0);
+    leaveTl.play();
 }
 
 onMounted(() => {
