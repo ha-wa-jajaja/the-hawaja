@@ -1,6 +1,7 @@
 <template>
     <div class="bg-black">
-        <LayoutEnterAnim />
+        <!-- <LayoutEnterAnim /> -->
+        <LayoutEnterAnimTextTwo />
     </div>
 </template>
 <script setup></script>
