@@ -41,15 +41,19 @@ function setupAnim() {
                     amount: 0.5,
                 },
             })
-            .from(iconFrame, {
-                yPercent: 15,
-                opacity: 0,
-                stagger: {
-                    grid: "auto",
-                    from: "random",
-                    amount: 0.5,
+            .from(
+                iconFrame,
+                {
+                    yPercent: 15,
+                    opacity: 0,
+                    stagger: {
+                        grid: "auto",
+                        from: "random",
+                        amount: 0.5,
+                    },
                 },
-            });
+                "<"
+            );
     }, skillGrid.value);
 }
 
