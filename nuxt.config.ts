@@ -87,6 +87,9 @@ export default defineNuxtConfig({
             "DM+Sans": {
                 wght: [300, 400, 600, 700],
             },
+            "Source+Code+Pro": {
+                wght: [500],
+            },
         },
     },
 });

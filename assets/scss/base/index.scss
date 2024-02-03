@@ -15,6 +15,11 @@
     font-family: "Tusker";
 }
 
+.source-code-pro {
+    font-family: "Source Code Pro", monospace;
+    font-weight: 500;
+}
+
 .absolute-center {
     @apply top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute;
 }

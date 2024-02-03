@@ -1,114 +1,140 @@
 <template>
-    <div>
-        {{ displayText }}
+    <div class="effect-text-container">
+        <p>{{ displayText }}</p>
     </div>
 </template>
+
 <script setup>
-const displayText = ref("");
+const chars = [
+    "&",
+    "#",
+    "*",
+    "+",
+    "%",
+    "?",
+    "£",
+    "@",
+    "§",
+    "$",
+];
 
-const state = reactive({
-    codeletters: "&#*+%?£@§$",
-    message: 0,
-    current_length: 0,
-    fadeBuffer: true,
-    messages: ["Hello", "World"],
-});
+let targetTexts = ["HELLO", "WORLD"];
+let targetText = "";
+let displayText = ref("");
+let currentTextCollection = new Array();
+let characterCount = 0;
+let characterSpeed = 120;
 
-const generateRandomString = (length) => {
-    let random_text = "";
-    while (random_text.length < length) {
-        random_text += state.codeletters.charAt(
-            Math.floor(
-                Math.random() * state.codeletters.length
-            )
-        );
-    }
-
-    return random_text;
-};
-
-const animateIn = () => {
-    if (
-        state.current_length <
-        state.messages[state.message].length
-    ) {
-        state.current_length = state.current_length + 2;
-        if (
-            state.current_length >
-            state.messages[state.message].length
-        ) {
-            state.current_length =
-                state.messages[state.message].length;
-        }
-
-        const message = generateRandomString(
-            state.current_length
-        );
-        displayText.value = message;
-
-        setTimeout(animateIn, 20);
-    } else {
-        setTimeout(animateFadeBuffer, 20);
-    }
-};
-
-const animateFadeBuffer = () => {
-    if (state.fadeBuffer === false) {
-        state.fadeBuffer = [];
-        for (
-            let i = 0;
-            i < state.messages[state.message].length;
-            i++
-        ) {
-            state.fadeBuffer.push({
-                c: Math.floor(Math.random() * 12) + 1,
-                l: state.messages[state.message].charAt(i),
-            });
-        }
-    }
-
-    let do_cycles = false;
-    let message = "";
-
-    for (let i = 0; i < state.fadeBuffer.length; i++) {
-        const fader = state.fadeBuffer[i];
-        if (fader.c > 0) {
-            do_cycles = true;
-            fader.c--;
-            message += state.codeletters.charAt(
-                Math.floor(
-                    Math.random() * state.codeletters.length
-                )
-            );
-        } else {
-            message += fader.l;
-        }
-    }
-
-    displayText.value = message;
-
-    if (do_cycles === true) {
-        setTimeout(animateFadeBuffer, 50);
-    } else {
-        setTimeout(cycleText, 2000);
-    }
-};
-
-const cycleText = () => {
-    state.message = state.message + 1;
-    if (state.message >= state.messages.length) {
-        state.message = 0;
-    }
-
-    state.current_length = 0;
-    state.fadeBuffer = false;
+const runningPair = ref(false);
+const runningIndex = ref(0);
+function resetAll() {
+    targetText = "";
     displayText.value = "";
+    currentTextCollection = new Array();
+    characterCount = 0;
+}
 
-    setTimeout(animateIn, 200);
-};
+function runEffect(idx) {
+    runningPair.value = true;
+    runningIndex.value = idx;
+    resetAll();
+    targetText = targetTexts[idx];
+    pushCurrentTextChars();
 
-onMounted(() => {
-    animateIn();
+    function pushCurrentTextChars() {
+        for (let i = 0; i < targetText.length; i++) {
+            let currentCharacter = targetText.slice(
+                i,
+                i + 1
+            );
+
+            currentTextCollection.push(currentCharacter);
+        }
+    }
+
+    let characterCountIncreaseInterval = setInterval(
+        characterCountIncrease,
+        characterSpeed
+    );
+
+    function characterCountIncrease() {
+        if (
+            characterCount == currentTextCollection.length
+        ) {
+            clearInterval(characterCountIncreaseInterval);
+
+            clearInterval(setRandomTextInterval);
+        }
+
+        characterCount++;
+    }
+
+    function getRandomText() {
+        let result = "";
+
+        if (characterCount == 0) {
+            for (
+                let i = 0;
+                i < currentTextCollection.length;
+                i++
+            ) {
+                let randomCharacter =
+                    chars[
+                        Math.floor(
+                            Math.random() * chars.length
+                        )
+                    ];
+
+                result += randomCharacter;
+            }
+        } else {
+            result = targetText.slice(0, characterCount);
+
+            for (
+                let i = 0;
+                i <
+                currentTextCollection.length -
+                    characterCount;
+                i++
+            ) {
+                let randomCharacter =
+                    chars[
+                        Math.floor(
+                            Math.random() * chars.length
+                        )
+                    ];
+
+                result += randomCharacter;
+            }
+        }
+
+        return result;
+    }
+
+    let setRandomTextInterval = setInterval(
+        setRandomText,
+        50
+    );
+
+    function setRandomText() {
+        displayText.value = getRandomText();
+    }
+}
+
+const emits = defineEmits(["sendPairFinished"]);
+watch(displayText, (val) => {
+    if (!runningPair.value) return;
+    if (runningIndex.value == 0 && val === targetTexts[0]) {
+        setTimeout(() => runEffect(1), 1200);
+    } else if (
+        runningIndex.value == 1 &&
+        val === targetTexts[1]
+    ) {
+        runningPair.value = false;
+        runningIndex.value = 0;
+        emits("sendPairFinished");
+    }
 });
+
+defineExpose({ runEffect });
 </script>
-<style lang=""></style>

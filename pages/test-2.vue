@@ -1,8 +1,7 @@
 <template>
     <div class="bg-black">
-        <!-- <LayoutEnterAnim /> -->
         <div class="w-screen h-screen bg-white">
-            <LayoutEnterAnimTextTwo />
+            <LayoutEnterAnim />
         </div>
 
         <div class="w-screen h-screen bg-black">
