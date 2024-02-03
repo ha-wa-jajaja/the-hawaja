@@ -1,8 +1,8 @@
 import { nextTick } from "vue";
-
+import type { DirectiveBinding } from "vue";
 function onIntersectionObserver(
-    el,
-    className = "fade-in",
+    el: HTMLElement,
+    className: string,
     stop = false
 ) {
     const callback = (entries) => {
@@ -24,37 +24,30 @@ function onIntersectionObserver(
     if (!stop) observer.observe(el);
 }
 
-const classNameMap = {
-    in: "animate-fade-in",
-    up: "animate-fade-up",
-    down: "animate-fade-down",
-    out: "animate-zoom-out",
-    scale: "animate-fade-scale",
-    clip: "animate-clip-reveal",
-    clipUp: "animate-clip-reveal-up",
-};
-
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.directive("fade", {
         beforeMount(el, binding) {
-            if (!binding.arg?.includes("clip"))
-                el.classList.add("opacity-0");
+            el.style.setProperty(
+                "--end",
+                binding.value ?? "0px"
+            );
+            el.classList.add("directive-animate-fade-init");
         },
-        mounted(el, binding) {
-            const className =
-                classNameMap[binding.arg] ??
-                classNameMap["in"];
+        mounted(el, binding: DirectiveBinding) {
             nextTick(() =>
-                onIntersectionObserver(el, className)
+                onIntersectionObserver(
+                    el,
+                    `directive-animate-fade-${binding.arg}`
+                )
             );
         },
         beforeUnmount(el, binding) {
-            const className =
-                classNameMap[binding.arg] ??
-                classNameMap["in"];
-            el.classList.remove("opacity-0", className);
+            el.classList.remove(
+                "directive-animate-fade-init",
+                `directive-animate-fade-${binding.arg}`
+            );
             nextTick(() =>
-                onIntersectionObserver(el, null, true)
+                onIntersectionObserver(el, "", true)
             );
         },
         getSSRProps(binding, vnode) {
