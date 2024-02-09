@@ -29,8 +29,8 @@
 </template>
 <script setup>
 import gsap from "gsap";
-import iconMail from "@/public/contact-icons/mail.svg";
-import iconLinkedin from "@/public/contact-icons/linkedin.svg";
+import iconMail from "@/assets/icons/mail.svg";
+import iconLinkedin from "@/assets/icons/linkedin.svg";
 
 const contact = ref();
 const title = ref();

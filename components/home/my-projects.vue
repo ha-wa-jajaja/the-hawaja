@@ -1,80 +1,100 @@
 <template>
     <section class="my-projects" ref="my_projects">
         <HomeProjectsTrans />
-        <main class="w-screen container overflow-hidden">
-            <div
-                class="w-full h-screen mb-16 flex flex-col justify-evenly relative max-2lg:justify-between"
+        <div class="w-full relative max-md:overflow-hidden">
+            <main
+                class="w-screen container overflow-hidden"
             >
-                <UiRellaxEl
-                    class="bg-text tusker"
-                    :speed="-2.5"
-                    @do-with-progress="fillText"
+                <div
+                    class="w-full h-screen mb-16 flex flex-col justify-evenly relative max-2lg:justify-between"
                 >
-                    <div class="relative">
-                        <p class="stroke">PROJECTS</p>
-                        <p
-                            class="fill"
-                            :style="{
-                                '--clip': `${fillProgress}%`,
+                    <UiRellaxEl
+                        class="bg-text tusker"
+                        :speed="-2.5"
+                        @do-with-progress="fillText"
+                    >
+                        <div class="relative">
+                            <p class="stroke">PROJECTS</p>
+                            <p
+                                class="fill"
+                                :style="{
+                                    '--clip': `${fillProgress}%`,
+                                }"
+                            >
+                                PROJECTS
+                            </p>
+                        </div>
+                    </UiRellaxEl>
+                    <UiRellaxEl
+                        class="absolute bottom-0 right-0 translate-x-[20%]"
+                        :speed="2.5"
+                        @do-on-enter="playCircle"
+                    >
+                        <UiExpandCircle
+                            :width="circleSize"
+                            ref="circle"
+                            :circle-id="'proj-bg'"
+                        />
+                    </UiRellaxEl>
+                    <UiRellaxEl
+                        class="absolute top-0 left-0 -translate-x-1/4"
+                        :speed="-1"
+                    >
+                        <img
+                            src="/cross-stroke.svg"
+                            alt=""
+                            class="w-[400px] scale-0 transition-transform duration-200 max-lg:w-[250px]"
+                            :class="{
+                                'scale-100': showCross,
                             }"
-                        >
-                            PROJECTS
-                        </p>
-                    </div>
-                </UiRellaxEl>
-                <UiRellaxEl
-                    class="absolute bottom-0 right-0 translate-x-[20%]"
-                    :speed="2.5"
-                    @do-on-enter="playCircle"
-                >
-                    <UiExpandCircle
-                        :width="circleSize"
-                        ref="circle"
-                        :circle-id="'proj-bg'"
+                            ref="cross"
+                        />
+                    </UiRellaxEl>
+                    <HomeProjectsProjectBlock
+                        :project-data="projects[0]"
                     />
-                </UiRellaxEl>
-                <UiRellaxEl
-                    class="absolute top-0 left-0 -translate-x-1/4"
-                    :speed="-1"
-                >
-                    <img
-                        src="/cross-stroke.svg"
-                        alt=""
-                        class="w-[400px] scale-0 transition-transform duration-200 max-lg:w-[250px]"
-                        :class="{ 'scale-100': showCross }"
-                        ref="cross"
+                    <HomeProjectsProjectBlock
+                        :project-data="projects[1]"
+                        :left="false"
                     />
-                </UiRellaxEl>
-                <HomeProjectsProjectBlock
-                    :project-data="projects[0]"
-                />
-                <HomeProjectsProjectBlock
-                    :project-data="projects[1]"
-                    :left="false"
-                />
-            </div>
-            <div
-                class="w-full h-screen flex flex-col justify-evenly relative max-lg:justify-between"
+                </div>
+                <div
+                    class="w-full h-screen flex flex-col justify-evenly relative max-lg:justify-between"
+                >
+                    <HomeProjectsProjectBlock
+                        :project-data="projects[2]"
+                    />
+                    <HomeProjectsProjectBlock
+                        :project-data="projects[3]"
+                        :left="false"
+                    />
+                </div>
+                <div
+                    class="flex h-[64px] text-[64px] text-white roboto font-bold my-10"
+                    ref="moreSection"
+                >
+                    <UiRandomText
+                        :target-text="'AND'"
+                        class="mr-4"
+                        ref="moreText"
+                    />
+                    <UiRandomText
+                        :target-text="'MORE...'"
+                        ref="moreText2"
+                    />
+                </div>
+            </main>
+            <UiRellaxEl
+                class="absolute bottom-0 right-0 translate-x-[20%]"
+                :speed="2"
             >
-                <HomeProjectsProjectBlock
-                    :project-data="projects[2]"
+                <img
+                    src="/cross-fill.svg"
+                    alt=""
+                    class="w-[500px] max-lg:w-[250px]"
                 />
-                <HomeProjectsProjectBlock
-                    :project-data="projects[3]"
-                    :left="false"
-                />
-            </div>
-        </main>
-        <UiRellaxEl
-            class="absolute bottom-0 right-0 translate-x-[20%]"
-            :speed="2"
-        >
-            <img
-                src="/cross-fill.svg"
-                alt=""
-                class="w-[500px] max-lg:w-[250px]"
-            />
-        </UiRellaxEl>
+            </UiRellaxEl>
+        </div>
     </section>
 </template>
 <script setup>
@@ -95,13 +115,27 @@ function playCircle() {
 
 const cross = ref();
 const showCross = ref(false);
+
+const moreSection = ref();
+const moreText = ref();
+const moreText2 = ref();
+const { currentLocale } = useLocale();
+
 onMounted(() => {
     useObserver(cross, () => (showCross.value = true));
+    useObserver(
+        moreSection,
+        () => {
+            moreText.value.runEffect();
+            if (currentLocale.value.code == "en")
+                moreText2.value.runEffect();
+        },
+        true
+    );
 });
 </script>
 <style lang="scss" scoped>
 .my-projects {
-    @apply relative;
     .bg-text {
         @apply absolute bottom-0 left-0;
 

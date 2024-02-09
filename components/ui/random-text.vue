@@ -1,85 +1,164 @@
 <template>
-    <div
-        class="text-[10vw] roboto relative z-10 font-semibold"
-        :class="{
-            'opacity-0':
-                props.waitForPrev && !props.prevDone,
-        }"
-    >
-        {{ output }}
+    <div class="effect-text-container">
+        <p>{{ displayText }}</p>
     </div>
 </template>
+
 <script setup>
 const props = defineProps({
-    content: {
-        type: String,
-        default: "",
-    },
-    waitForPrev: {
-        type: Boolean,
-        default: false,
-    },
-    prevDone: {
-        type: Boolean,
-        default: false,
+    targetText: {
+        type: [String, Array],
     },
 });
-const theLetters = "1234567890abc!#%&^+=-";
-const speed = 20;
-const increment = 6;
 
-const clen = ref(props.content.length);
-let si = 0;
-let stri = 0;
-let block = "";
-let fixed = "";
+const chars = [
+    "&",
+    "#",
+    "*",
+    "+",
+    "%",
+    "?",
+    "£",
+    "@",
+    "§",
+    "$",
+];
 
-const output = ref("&nbsp;");
-const done = computed(() => output.value === props.content);
-defineExpose({ done });
+let targetTexts = ["HELLO", "WORLD"];
+let targetText = "";
+let displayText = ref("");
+let currentTextCollection = new Array();
+let characterCount = 0;
+let characterSpeed = 120;
 
-const nextFrame = () => {
-    for (let i = 0; i < clen.value - stri; i++) {
-        const num = Math.floor(
-            theLetters.length * Math.random()
-        );
-        const letter = theLetters.charAt(num);
-        block = block + letter;
-    }
+const running = ref(false);
+const runningIndex = ref(0);
+function resetAll() {
+    targetText = "";
+    displayText.value = "";
+    currentTextCollection = new Array();
+    characterCount = 0;
+}
 
-    if (si === increment - 1) {
-        stri++;
-    }
+function runEffect(idx) {
+    running.value = true;
+    runningIndex.value = idx;
+    resetAll();
+    targetText = Array.isArray(props.targetText)
+        ? props.targetText[idx]
+        : props.targetText;
+    pushCurrentTextChars();
 
-    if (si === increment) {
-        fixed = fixed + props.content.charAt(stri - 1);
-        si = 0;
-    }
+    function pushCurrentTextChars() {
+        for (let i = 0; i < targetText.length; i++) {
+            let currentCharacter = targetText.slice(
+                i,
+                i + 1
+            );
 
-    output.value = fixed + block;
-    block = "";
-};
-
-const rustle = (i) => {
-    setTimeout(() => {
-        if (--i) {
-            rustle(i);
+            currentTextCollection.push(currentCharacter);
         }
-        nextFrame(i);
-        si = si + 1;
-    }, speed);
-};
-
-watch(
-    () => props.prevDone,
-    (val) => {
-        if (val && props.waitForPrev)
-            rustle(clen.value * increment + 1);
     }
-);
 
-onMounted(() => {
-    if (!props.waitForPrev)
-        rustle(clen.value * increment + 1);
+    let characterCountIncreaseInterval = setInterval(
+        characterCountIncrease,
+        characterSpeed
+    );
+
+    function characterCountIncrease() {
+        if (
+            characterCount == currentTextCollection.length
+        ) {
+            clearInterval(characterCountIncreaseInterval);
+
+            clearInterval(setRandomTextInterval);
+        }
+
+        characterCount++;
+    }
+
+    function getRandomText() {
+        let result = "";
+
+        if (characterCount == 0) {
+            for (
+                let i = 0;
+                i < currentTextCollection.length;
+                i++
+            ) {
+                let randomCharacter =
+                    chars[
+                        Math.floor(
+                            Math.random() * chars.length
+                        )
+                    ];
+
+                result += randomCharacter;
+            }
+        } else {
+            result = targetText.slice(0, characterCount);
+
+            for (
+                let i = 0;
+                i <
+                currentTextCollection.length -
+                    characterCount;
+                i++
+            ) {
+                let randomCharacter =
+                    chars[
+                        Math.floor(
+                            Math.random() * chars.length
+                        )
+                    ];
+
+                result += randomCharacter;
+            }
+        }
+
+        return result;
+    }
+
+    let setRandomTextInterval = setInterval(
+        setRandomText,
+        50
+    );
+
+    function setRandomText() {
+        displayText.value = getRandomText();
+    }
+}
+
+function onRunEnd() {
+    running.value = false;
+    runningIndex.value = 0;
+    emits("sendEffectFinished");
+}
+
+const emits = defineEmits(["sendEffectFinished"]);
+watch(displayText, (val) => {
+    if (!running.value) return;
+    if (!Array.isArray(props.targetText)) {
+        if (props.targetText === val) return onRunEnd();
+    } else {
+        const maxIdx = props.targetText.length - 1;
+        if (
+            runningIndex.value !== maxIdx &&
+            val === targetTexts[runningIndex.value]
+        ) {
+            runningIndex.value += 1;
+            setTimeout(
+                () => runEffect(runningIndex.value),
+                800
+            );
+        } else if (
+            runningIndex.value == maxIdx &&
+            val === targetTexts[maxIdx]
+        ) {
+            return onRunEnd();
+        }
+    }
 });
+
+defineExpose({ runEffect });
 </script>

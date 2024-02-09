@@ -8,7 +8,7 @@
         ref="enterAnim"
     >
         <div
-            class="source-code-pro flex text-[72px] relative"
+            class="source-code-pro flex text-[72px] relative max-lg:text-[56px]"
         >
             <div class="bracket-l overflow-hidden">
                 <p>{{ "<" }}</p>
@@ -19,8 +19,13 @@
                 <div ref="textSpacer" class="opacity-0">
                     {{ texts[0] }}
                 </div>
-                <LayoutEnterAnimText
-                    @send-pair-finished="onEffectPairEnd"
+                <!-- <LayoutEnterAnimText
+                    @send-pair-finished=""
+                    
+                /> -->
+                <UiRandomText
+                    :target-text="['HELLO', 'WORLD']"
+                    @send-effect-finished="onEffectPairEnd"
                     class="w-full h-full -translate-y-1/2"
                     ref="enterAnimText"
                 />

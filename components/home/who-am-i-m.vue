@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-full relative py-16 who-am-i-m"
+        class="w-full relative py-16 who-am-i-m overflow-hidden"
         ref="whoAmI_M"
     >
         <UiExpandCircle
