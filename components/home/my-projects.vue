@@ -70,7 +70,7 @@
                     />
                 </div>
                 <div
-                    class="flex h-[64px] text-[64px] text-white roboto font-bold my-10"
+                    class="flex h-[64px] text-[64px] text-white roboto font-bold my-10 max-lg:text-[32px]"
                     ref="moreSection"
                 >
                     <UiRandomText
