@@ -125,7 +125,7 @@ const emits = defineEmits(["sendPairFinished"]);
 watch(displayText, (val) => {
     if (!runningPair.value) return;
     if (runningIndex.value == 0 && val === targetTexts[0]) {
-        setTimeout(() => runEffect(1), 1200);
+        setTimeout(() => runEffect(1), 800);
     } else if (
         runningIndex.value == 1 &&
         val === targetTexts[1]

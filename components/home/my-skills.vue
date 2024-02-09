@@ -42,9 +42,8 @@ watch(scrollProgress, (progress) => {
 const title = ref();
 const skillsGrid = ref();
 function titleAnim() {
-    title.value
-        .playAnim()
-        .then(() => skillsGrid.value.playAnim());
+    title.value.playAnim();
+    skillsGrid.value.playAnim();
 }
 </script>
 <style lang=""></style>
