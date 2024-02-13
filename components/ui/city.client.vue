@@ -95,7 +95,8 @@ function setRenderer() {
     updateRenderer();
 }
 
-onMounted(() => {
+onMounted(async () => {
+    await nextTick();
     setRenderer();
     loop();
 });
