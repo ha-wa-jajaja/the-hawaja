@@ -20,6 +20,10 @@ const activeSkill = ref("");
 defineExpose({ activeSkill });
 function setActiveSkill(str) {
     activeSkill.value = str;
+    document.querySelector(".my-skills-m").scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+    });
 }
 </script>
 <style lang="scss" scoped>

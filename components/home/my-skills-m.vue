@@ -1,5 +1,8 @@
 <template>
-    <div class="container" ref="my_skill_m_wrap">
+    <div
+        class="container my-skills-m"
+        ref="my_skill_m_wrap"
+    >
         <UiTextRevealer
             ref="title"
             class="mb-4"
