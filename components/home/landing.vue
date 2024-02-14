@@ -1,6 +1,6 @@
 <template>
     <UiStickyPinSection ref="pinWrapper" :height="150">
-        <main class="w-full h-full mx-0 my-auto max-w-[1920px] relative" >
+        <main class="w-full h-full mx-0 my-auto max-w-[1920px] relative">
 
             <!-- landing text > 992 -->
             <section class="absolute bottom-0 left-0 w-fit h-fit" v-if="$useMedia.min('ms')">
@@ -56,17 +56,16 @@ function setupAnim() {
         .to(".scroll-sign", { opacity: 1, xPercent: 0, duration: 0.5 });
 }
 const store = useGlobalStore()
-const pageInitLoaded = computed(()=>store.pageInitLoaded)
-watch(pageInitLoaded,(val)=>{
-    if(val) {
-        setTimeout(()=>tl.play(),1000)
+const pageInitLoaded = computed(() => store.pageInitLoaded)
+watch(pageInitLoaded, (val) => {
+    if (val) {
+        setTimeout(() => tl.play(), 1000)
     }
 })
 
-
-onMounted(async () => {
-    setupAnim()
-    await nextTick()
+onMounted(() => {
+    setupAnim();
 })
+
 
 </script>
