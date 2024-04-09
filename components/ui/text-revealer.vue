@@ -1,11 +1,8 @@
 <template>
-    <div
-        class="relative px-4 py-4 w-fit h-fit"
-        ref="wrapper"
-    >
+    <div class="relative px-3 py-2 w-fit h-fit" ref="wrapper">
         <div class="content-wrap overflow-visible">
             <div
-                class="content w-fit h-fit min-2lg:text-[100px] text-[64px] text-white tusker font-bold"
+                class="content w-fit h-fit min-2lg:text-[80px] text-[64px] text-white tusker font-bold"
             >
                 {{ props.content }}
             </div>
@@ -60,9 +57,7 @@ function setupAnim() {
 }
 
 function playAnim() {
-    return new Promise((resolve) =>
-        tl.play().call(() => resolve())
-    );
+    return new Promise((resolve) => tl.play().call(() => resolve()));
 }
 defineExpose({ playAnim, refTl });
 

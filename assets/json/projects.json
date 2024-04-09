@@ -1,64 +1,100 @@
 {
     "projects": [
         {
-            "name": "Airside",
-            "key": "airside",
-            "link": "https://www.airside.com.hk/en"
+            "name": "The HAWAJA",
+            "key": "portfolio",
+            "link": "https://the-hawaja.vercel.app/",
+            "techs": ["Nuxt 3", "Tailwind CSS", "GSAP", "Three.js"],
+            "description": "個人簡介網站，著重實現互動動畫效果。",
+            "github": "https://github.com/ha-wa-jajaja/the-hawaja"
         },
         {
-            "name": "Airside iaq",
-            "key": "airsideIaq",
-            "link": "https://iaq.airside.com.hk/"
-        },
-        {
-            "name": "Yidan Prize",
-            "key": "yidan",
-            "link": "https://yidanprize.org/"
-        },
-        {
-            "name": "Wynn Macau",
-            "key": "wynn",
-            "link": "https://www.wynnresortsmacau.com/en/wynn-macau"
+            "name": "Locale Helper",
+            "key": "helper",
+            "link": "https://locale-helper.vercel.app/",
+            "techs": ["React"],
+            "description": "利用React開發，將csv格式檔案轉換為I18n專用，可自訂key之json格式的工具型專案。",
+            "github": "https://github.com/ha-wa-jajaja/locale-helper"
         },
         {
             "name": "Welend",
             "key": "welend",
-            "link": "https://www.welend.hk/en"
-        },
-        {
-            "name": "PolyU Soinno",
-            "key": "polyu",
-            "link": "https://soinnohub.polyujcsoinno.hk/zh-hant/"
-        },
-        {
-            "name": "K&K Charity",
-            "key": "kk",
-            "link": null
-        },
-        {
-            "name": "Hopewell Cluster",
-            "key": "hopewell",
-            "link": "https://www.hopewellcluster.com/"
-        },
-        {
-            "name": "House Of Beauty",
-            "key": "hob",
-            "link": "https://houseofbeauty.com.hk/en"
-        },
-        {
-            "name": "New Yaohan",
-            "key": "nyh",
-            "link": null
+            "link": "https://www.welend.hk/en",
+            "techs": ["Nuxt 3", "Tailwind CSS", "GSAP", "Lottie"],
+            "description": "香港私人貸款Welend官方網站。使用Nuxt3與Tailwind CSS開發，GSAP與Lottie實現動畫與互動效果；個人主要負責貸款計算機與產品比較表功能。",
+            "github": null
         },
         {
             "name": "NF Touch",
             "key": "NFT",
-            "link": "https://www.nftouch.com.hk/en/"
+            "link": "https://www.nftouch.com.hk/en/",
+            "techs": ["Nuxt 3", "GraphQL", "TypeScript"],
+            "description": "香港南豐集團NF Touch APP前臺引導及註冊網站。首頁仍在開發中。",
+            "github": null
         },
         {
-            "name": "LP Lucky Draw",
-            "key": "lp",
-            "link": null
+            "name": "Airside",
+            "key": "airside",
+            "link": "https://www.airside.com.hk/en",
+            "techs": ["Nuxt 2", "GSAP", "Tailwind CSS"],
+            "description": "位處香港，由著名 Snøhetta 建築事務所打造的一座樓高47層的綜合地標大樓之官方網站。使用Nuxt 2與Tailwind css開發，此網站可由cms設定動態版面，使用者可自由調整各區塊排序以及內容。",
+            "github": null
+        },
+        {
+            "name": "New Yaohan",
+            "key": "nyh",
+            "link": "https://www.newyaohan.com/",
+            "techs": ["Nuxt 3"],
+            "description": "澳門新八百伴百貨公司官方網站。使用Nuxt3進行開發。",
+            "github": null
+        },
+        {
+            "name": "PolyU Soinno",
+            "key": "polyu",
+            "link": "https://soinnohub.polyujcsoinno.hk/zh-hant/",
+            "techs": ["Webpack", "non framework"],
+            "description": "香港理工大學社創活動官方網站。使用Webpack為架構開發。",
+            "github": null
+        },
+        {
+            "name": "Airside iaq",
+            "key": "airsideIaq",
+            "link": "https://iaq.airside.com.hk/",
+            "techs": ["Nuxt 2"],
+            "description": "香港Airside商場空氣品質即時資訊網站。使用Nuxt2開發。",
+            "github": null
+        },
+        {
+            "name": "Yidan Prize",
+            "key": "yidan",
+            "link": "https://yidanprize.org/",
+            "techs": ["Nuxt 2"],
+            "description": "全球性的教育單項獎：一丹獎官方網站。",
+            "github": null
+        },
+        {
+            "name": "Wynn Macau",
+            "key": "wynn",
+            "link": "https://www.wynnresortsmacau.com/en/wynn-macau",
+            "techs": ["Nuxt 2"],
+            "description": "澳門永利飯店官方網站。利用Nuxt2開發。",
+            "github": null
+        },
+        {
+            "name": "Hopewell Cluster",
+            "key": "hopewell",
+            "link": "https://www.hopewellcluster.com/",
+            "techs": ["Nuxt 3"],
+            "description": "香港飲食概念中心Hopewell Cluster之官方網站。",
+            "github": null
+        },
+        {
+            "name": "House Of Beauty",
+            "key": "hob",
+            "link": "https://houseofbeauty.com.hk/en",
+            "techs": ["Nuxt 2"],
+            "description": "香港美容護膚品牌HOB之官方網站。",
+            "github": null
         }
     ]
 }

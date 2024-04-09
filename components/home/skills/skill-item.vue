@@ -55,11 +55,7 @@
                 'bottom-0': !isHorizontal,
             }"
         >
-            <img
-                :src="`/wires/${skillIcon}`"
-                alt=""
-                class="w-full h-auto"
-            />
+            <img :src="`/wires/${skillIcon}`" alt="" class="w-full h-auto" />
         </div>
     </a>
 </template>
@@ -75,20 +71,11 @@ const props = defineProps({
 const skillName = computed(() => props.skillObj?.name);
 const skillKey = computed(() => props.skillObj?.key);
 const skillIcon = computed(() => props.skillObj?.icon);
-const skillGradients = computed(
-    () => props.skillObj?.gradients
-);
+const skillGradients = computed(() => props.skillObj?.gradients);
 const skillLink = computed(() => props.skillObj?.link);
 
-const horizontalItems = [
-    "gsap",
-    "tailwind",
-    "react",
-    "python",
-];
-const isHorizontal = computed(() =>
-    horizontalItems.includes(skillKey.value)
-);
+const horizontalItems = ["gsap", "tailwind", "react", "python"];
+const isHorizontal = computed(() => horizontalItems.includes(skillKey.value));
 
 let ctx;
 let tl;
@@ -100,12 +87,7 @@ function setupGsap() {
             self.selector(".icon-frame"),
             self.selector(".colored-icon-frame"),
         ];
-        if (
-            Object.prototype.hasOwnProperty.call(
-                props.skillObj,
-                "translate"
-            )
-        ) {
+        if (Object.prototype.hasOwnProperty.call(props.skillObj, "translate")) {
             let trans = props.skillObj.translate;
             iconFrames.forEach((el) => {
                 gsap.set(el, {
