@@ -1,5 +1,6 @@
 <template>
     <div class="pageIndex">
+        <LayoutEnterAnim />
         <HomeBackground />
         <div class="relative z-10">
             <HomeLanding />

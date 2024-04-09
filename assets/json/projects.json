@@ -44,8 +44,8 @@
             "name": "New Yaohan",
             "key": "nyh",
             "link": "https://www.newyaohan.com/",
-            "techs": ["Nuxt 3"],
-            "description": "澳門新八百伴百貨公司官方網站。使用Nuxt3進行開發。",
+            "techs": ["Nuxt 3", "Vuetify"],
+            "description": "澳門新八百伴百貨公司官方網站。使用Nuxt3進行開發，並以Vuetify做為UI元件庫。",
             "github": null
         },
         {

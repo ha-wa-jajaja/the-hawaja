@@ -2,9 +2,7 @@
     <section class="my-projects" ref="my_projects">
         <HomeProjectsTrans />
         <div class="w-full relative max-md:overflow-hidden">
-            <main
-                class="w-screen container overflow-hidden"
-            >
+            <main class="w-screen container overflow-hidden">
                 <div
                     class="w-full h-screen mb-16 flex flex-col justify-evenly relative max-2lg:justify-between"
                 >
@@ -50,9 +48,7 @@
                             ref="cross"
                         />
                     </UiRellaxEl>
-                    <HomeProjectsProjectBlock
-                        :project-data="projects[0]"
-                    />
+                    <HomeProjectsProjectBlock :project-data="projects[0]" />
                     <HomeProjectsProjectBlock
                         :project-data="projects[1]"
                         :left="false"
@@ -61,28 +57,28 @@
                 <div
                     class="w-full h-screen flex flex-col justify-evenly relative max-lg:justify-between"
                 >
-                    <HomeProjectsProjectBlock
-                        :project-data="projects[2]"
-                    />
+                    <HomeProjectsProjectBlock :project-data="projects[2]" />
                     <HomeProjectsProjectBlock
                         :project-data="projects[3]"
                         :left="false"
                     />
                 </div>
-                <div
-                    class="flex h-[64px] text-[64px] text-white roboto font-bold my-10 max-lg:text-[32px]"
-                    ref="moreSection"
-                >
-                    <UiRandomText
-                        :target-text="'AND'"
-                        class="mr-4"
-                        ref="moreText"
-                    />
-                    <UiRandomText
-                        :target-text="'MORE...'"
-                        ref="moreText2"
-                    />
-                </div>
+                <NuxtLink :to="'/projects'" target="_blank">
+                    <div
+                        class="flex h-[64px] text-[64px] text-white roboto font-bold my-10 max-lg:text-[32px]"
+                        ref="moreSection"
+                    >
+                        <UiRandomText
+                            :target-text="'AND'"
+                            class="mr-4"
+                            ref="moreText"
+                        />
+                        <UiRandomText
+                            :target-text="'MORE...'"
+                            ref="moreText2"
+                        />
+                    </div>
+                </NuxtLink>
             </main>
             <UiRellaxEl
                 class="absolute bottom-0 right-0 translate-x-[20%]"
@@ -127,8 +123,7 @@ onMounted(() => {
         moreSection,
         () => {
             moreText.value.runEffect();
-            if (currentLocale.value.code == "en")
-                moreText2.value.runEffect();
+            if (currentLocale.value.code == "en") moreText2.value.runEffect();
         },
         true
     );

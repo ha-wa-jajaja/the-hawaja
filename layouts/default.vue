@@ -1,6 +1,6 @@
 <template>
     <div>
-        <LayoutEnterAnim />
+        <!-- <LayoutEnterAnim /> -->
         <slot />
         <!-- <NuxtWelcome /> -->
     </div>
